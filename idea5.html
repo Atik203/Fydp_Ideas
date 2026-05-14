@@ -372,25 +372,52 @@
       <!-- 6. Evaluation -->
       <section>
         <h2><span class="section-icon">📐</span> 6. Evaluation Plan</h2>
-        <div class="chip-row">
-          <span class="chip green">Code Execution Rate ↑</span>
-          <span class="chip green">Statistical Match Rate ↑</span>
-          <span class="chip rose">Error Detection F1 ↑</span>
-          <span class="chip amber">Retry Efficiency</span>
+        <p class="text-muted" style="margin-bottom: 1rem">
+          Metrics, benchmarks, baselines, and realistic targets.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>What It Measures</th>
+                <th>Benchmark</th>
+                <th>Baseline</th>
+                <th>Our Target</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Claim Verification Accuracy</strong></td>
+                <td>Correct verdict on SciFact test claims</td>
+                <td>SciFact</td>
+                <td>GPT-4: 71% · MultiVerS: 84.6%</td>
+                <td class="text-accent"><strong>&gt; 79%</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Hallucination Rate</strong></td>
+                <td>% of atomic claims fabricated</td>
+                <td>FactScore</td>
+                <td>GPT-4: 23% · Llama-3.1: 18%</td>
+                <td class="text-accent"><strong>&lt; 10%</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Evidence Retrieval NDCG@10</strong></td>
+                <td>Relevance of retrieved papers</td>
+                <td>SciFact gold</td>
+                <td>BM25: 0.61 · SciBERT: 0.68</td>
+                <td class="text-accent"><strong>&gt; 0.76</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Methodology Flaw Detection F1</strong></td>
+                <td>Correct identification of flaws</td>
+                <td>PeerRead subset</td>
+                <td>No baseline exists</td>
+                <td class="text-accent"><strong>&gt; 65%</strong></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <h3>Human Evaluation</h3>
-        <p>
-          50-sample subset: 2 reviewers assess (a) correct test selected? (b)
-          code logically correct? (c) verdict justified? Cohen's κ reported for
-          inter-annotator agreement.
-        </p>
-        <h3>Failure Taxonomy</h3>
-        <p>
-          All INCONCLUSIVE cases categorised by cause: missing data / format
-          error / ambiguous column / test selection error / unreported
-          preprocessing. This taxonomy is a standalone contribution for the
-          reproducibility community.
-        </p>
       </section>
 
       <!-- 7. Expected Results -->

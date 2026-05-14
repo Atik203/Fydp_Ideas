@@ -394,38 +394,59 @@
       <!-- 6. Evaluation -->
       <section>
         <h2><span class="section-icon">📐</span> 6. Evaluation Plan</h2>
-        <div class="chip-row">
-          <span class="chip green">Macro-F1 (3-class) ↑</span>
-          <span class="chip">Evidence F1 ↑</span>
-          <span class="chip rose">Hard-Claim Accuracy ↑</span>
-          <span class="chip amber">Discourse Parser F1</span>
+        <p class="text-muted" style="margin-bottom: 1rem">
+          Metrics, benchmarks, baselines, and realistic targets.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>Benchmark</th>
+                <th>Baseline</th>
+                <th>Our Target</th>
+                <th>Statistical Test</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Claim Verification F1</strong></td>
+                <td>SciFact (test set)</td>
+                <td>MultiVerS: 84.6% F1</td>
+                <td class="text-accent"><strong>&gt;88% F1</strong></td>
+                <td>McNemar's test, p &lt; 0.05</td>
+              </tr>
+              <tr>
+                <td><strong>Contradiction Detection F1</strong></td>
+                <td>SciContra (held-out)</td>
+                <td>No baseline</td>
+                <td class="text-accent"><strong>&gt;78% F1</strong></td>
+                <td>Bootstrap CI (95%)</td>
+              </tr>
+              <tr>
+                <td><strong>ECE (Calibration)</strong></td>
+                <td>SciFact + SciContra</td>
+                <td>Uncalibrated (~0.19)</td>
+                <td class="text-accent"><strong>&lt;0.08</strong></td>
+                <td>Hosmer-Lemeshow</td>
+              </tr>
+              <tr>
+                <td><strong>Expert Agreement (κ)</strong></td>
+                <td>Human evaluation</td>
+                <td>—</td>
+                <td class="text-accent"><strong>&gt;0.75</strong></td>
+                <td>Cohen's κ with 95% CI</td>
+              </tr>
+              <tr>
+                <td><strong>SAG Construction Accuracy</strong></td>
+                <td>SciArg + custom</td>
+                <td>SciBERT NER: 71% F1</td>
+                <td class="text-accent"><strong>&gt;78% F1</strong></td>
+                <td>Span-level F1</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <h3>Stratified Evaluation</h3>
-        <p>
-          Results reported separately for difficulty tiers, which is the key
-          novelty of our evaluation protocol:
-        </p>
-        <ul>
-          <li>
-            <strong>Easy claims</strong> — verifiable from a single sentence
-            (baseline strong here)
-          </li>
-          <li>
-            <strong>Medium claims</strong> — require 2-sentence cross-reference
-            (moderate improvement expected)
-          </li>
-          <li>
-            <strong>Hard claims</strong> — require ≥3 sentences or cross-section
-            reasoning (largest improvement here)
-          </li>
-        </ul>
-        <h3>Statistical Protocol</h3>
-        <p>
-          3-seed runs. 95% CI. Paired bootstrap resampling significance tests.
-          McNemar's test for per-instance comparison against strongest baseline
-          (MultiVerS). Inter-annotator agreement (Cohen's κ) for difficulty tier
-          annotation.
-        </p>
       </section>
 
       <!-- 7. Expected Results -->

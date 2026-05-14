@@ -442,67 +442,65 @@
       <!-- 6. Evaluation -->
       <section>
         <h2><span class="section-icon">📐</span> 6. Evaluation Plan</h2>
-
-        <h3>Primary Metrics</h3>
-        <div class="chip-row">
-          <span class="chip rose">Sycophancy Rate ↓</span>
-          <span class="chip green">Final Accuracy (EM) ↑</span>
-          <span class="chip">Debate Efficiency ↓</span>
-          <span class="chip amber">Trust Calibration Error ↓</span>
+        <p class="text-muted" style="margin-bottom: 1rem">
+          Metrics, benchmarks, baselines, and realistic targets.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>What It Measures</th>
+                <th>Benchmark</th>
+                <th>Current Baseline</th>
+                <th>Our Target</th>
+                <th>Justification</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Claim Accuracy</strong></td>
+                <td>Correct verdict on contradictory pairs</td>
+                <td>SciFact</td>
+                <td>GPT-4: 71.2%</td>
+                <td class="text-accent"><strong>&gt;82%</strong></td>
+                <td>11% improvement over best single-pass LLM</td>
+              </tr>
+              <tr>
+                <td><strong>ECE (Calibration Error)</strong></td>
+                <td>Trust score reliability vs. empirical accuracy</td>
+                <td>SciContra</td>
+                <td>Uncalibrated</td>
+                <td class="text-accent"><strong>&lt;0.06</strong></td>
+                <td>Well-calibrated clinical AI standard</td>
+              </tr>
+              <tr>
+                <td><strong>Debate Convergence Rate</strong></td>
+                <td>% of debates reaching stable consensus</td>
+                <td>SciContra</td>
+                <td>No baseline exists</td>
+                <td class="text-accent"><strong>&gt;75%</strong></td>
+                <td>New metric — establishes first baseline</td>
+              </tr>
+              <tr>
+                <td><strong>Expert Agreement (κ)</strong></td>
+                <td>Human domain expert vs. system alignment</td>
+                <td>Human eval (n=3)</td>
+                <td>—</td>
+                <td class="text-accent"><strong>&gt;0.78</strong></td>
+                <td>Substantial agreement</td>
+              </tr>
+              <tr>
+                <td><strong>Hallucination Rate</strong></td>
+                <td>% false scientific claims in output</td>
+                <td>FactScore</td>
+                <td>GPT-4: 23.1%</td>
+                <td class="text-accent"><strong>&lt;8%</strong></td>
+                <td>65% hallucination reduction via trust calibration</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>Metric</th>
-              <th>Definition</th>
-              <th>Measurement Method</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Sycophancy Rate</strong></td>
-              <td>
-                Fraction of instances where agent abandons correct initial
-                answer to agree with incorrect majority
-              </td>
-              <td>
-                Controlled injection: planted wrong majority opinion in 30% of
-                test questions
-              </td>
-            </tr>
-            <tr>
-              <td><strong>Final Accuracy (EM)</strong></td>
-              <td>Exact Match on SciBench/GPQA test sets</td>
-              <td>Standard evaluation harness; gold answer comparison</td>
-            </tr>
-            <tr>
-              <td><strong>Debate Efficiency</strong></td>
-              <td>
-                Mean rounds to stable consensus (K where trust delta &lt; 0.01)
-              </td>
-              <td>Logged per session; lower K = more efficient convergence</td>
-            </tr>
-            <tr>
-              <td><strong>Trust Calibration Error</strong></td>
-              <td>
-                Expected Calibration Error (ECE) between agent trust score and
-                actual per-turn accuracy
-              </td>
-              <td>
-                Binned reliability diagram; computed via sklearn.calibration
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3>Baselines</h3>
-        <ol>
-          <li>Single-agent CoT (Llama-3-8B) — no debate</li>
-          <li>Standard MAD (Du et al., 2023) — debate, no trust, no RAG</li>
-          <li>RAG-augmented single agent — no debate</li>
-          <li>MAD + static judge — debate, no dynamic trust</li>
-          <li>GPT-4o zero-shot — oracle ceiling</li>
-        </ol>
       </section>
 
       <!-- 7. Expected Results -->

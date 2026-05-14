@@ -300,12 +300,13 @@ table {
 }
 th, td { padding: .8rem 1rem; text-align: left; }
 th {
-  background: var(--primary);
-  color: #fff;
-  font-size: .75rem;
+  background: #f1f5f9;
+  color: var(--text);
+  font-size: .8rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .05em;
+  text-transform: none;
+  letter-spacing: normal;
+  border-bottom: 2px solid var(--border);
 }
 td { border-bottom: 1px solid var(--border); }
 tr:last-child td { border-bottom: none; }
@@ -517,7 +518,6 @@ footer a { color: #93c5fd; }
   table { 
     display: block; 
     overflow-x: auto; 
-    white-space: nowrap; 
     -webkit-overflow-scrolling: touch;
   }
   

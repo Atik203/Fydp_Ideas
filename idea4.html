@@ -374,27 +374,52 @@
       <!-- 6. Evaluation -->
       <section>
         <h2><span class="section-icon">📐</span> 6. Evaluation Plan</h2>
-        <div class="chip-row">
-          <span class="chip green">Top-1 Accuracy ↑</span>
-          <span class="chip green">Top-5 Accuracy ↑</span>
-          <span class="chip">Top-10 Accuracy ↑</span>
-          <span class="chip amber">Extraction F1 ↑</span>
-          <span class="chip rose">Reasoning Hallucination Rate ↓</span>
+        <p class="text-muted" style="margin-bottom: 1rem">
+          Metrics, benchmarks, baselines, and realistic targets.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>What It Measures</th>
+                <th>Benchmark</th>
+                <th>Baseline</th>
+                <th>Our Target</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Rare Disease NER F1</strong></td>
+                <td>Extraction accuracy for rare phenotypes</td>
+                <td>MIMIC-III subset</td>
+                <td>BioBERT: 65%</td>
+                <td class="text-accent"><strong>&gt; 76%</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Ontology Linking Accuracy</strong></td>
+                <td>Correct mapping to SNOMED/HPO codes</td>
+                <td>Custom Dataset</td>
+                <td>Standard LLM: 52%</td>
+                <td class="text-accent"><strong>&gt; 70%</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Few-Shot Generalization</strong></td>
+                <td>F1 on previously unseen diseases</td>
+                <td>Held-out Set</td>
+                <td>GPT-4: 58%</td>
+                <td class="text-accent"><strong>&gt; 68%</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Explanation Faithfulness</strong></td>
+                <td>Alignment of symbolic path with output</td>
+                <td>Expert Eval</td>
+                <td>—</td>
+                <td class="text-accent"><strong>&gt; 80%</strong></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <h3>Stratification</h3>
-        <p>
-          Results reported separately for: (a) <em>ultra-rare</em> (&lt;1:1M
-          prevalence), (b) <em>moderately rare</em> (1:100K–1:1M), and (c)
-          <em>rare but known</em> (&gt;1:100K). Expected largest gain in
-          category (a).
-        </p>
-        <h3>Hallucination Audit</h3>
-        <p>
-          For 100-sample subset: 2 annotators assess whether the explanation
-          contains claims not supported by the symbolic output. Cohen's κ
-          reported. Expected: reasoning-layer hallucination rate ≈ 0%
-          (deterministic); generation-layer rate measured and reported.
-        </p>
       </section>
 
       <!-- 7. Expected Results -->

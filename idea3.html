@@ -436,45 +436,52 @@
       <!-- 6. Evaluation -->
       <section>
         <h2><span class="section-icon">📐</span> 6. Evaluation Plan</h2>
-        <div class="chip-row">
-          <span class="chip green">Temporal Accuracy ↑</span>
-          <span class="chip rose">Temporal Hallucination Rate ↓</span>
-          <span class="chip">Temporal Isolation Score ↑</span>
-          <span class="chip amber">Overall EM / F1 ↑</span>
+        <p class="text-muted" style="margin-bottom: 1rem">
+          Metrics, benchmarks, baselines, and realistic targets.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>What It Measures</th>
+                <th>Benchmark</th>
+                <th>Baseline</th>
+                <th>Our Target</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Temporal QA Accuracy</strong></td>
+                <td>Correctness on time-sensitive queries</td>
+                <td>TempoQA</td>
+                <td>GPT-4: 62%</td>
+                <td class="text-accent"><strong>&gt; 75%</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Temporal Conflict Resolution Rate</strong></td>
+                <td>Correctly overriding outdated parametric knowledge</td>
+                <td>Custom Conflict Set</td>
+                <td>Standard RAG: ~45%</td>
+                <td class="text-accent"><strong>&gt; 80%</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Knowledge Graph Faithfulness</strong></td>
+                <td>% of answers fully supported by retrieved sub-graph</td>
+                <td>Human Eval</td>
+                <td>Baseline RAG: 71%</td>
+                <td class="text-accent"><strong>&gt; 85%</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Retrieval Recall@5</strong></td>
+                <td>Capturing temporally relevant evidence</td>
+                <td>TempoQA subset</td>
+                <td>BM25: 58%</td>
+                <td class="text-accent"><strong>&gt; 72%</strong></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>Metric</th>
-              <th>Definition</th>
-              <th>Evaluation Method</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Temporal Accuracy</strong></td>
-              <td>EM accuracy on questions with a temporal qualifier</td>
-              <td>TimeQA/TempQuestions test sets</td>
-            </tr>
-            <tr>
-              <td><strong>Temporal Hallucination Rate</strong></td>
-              <td>
-                Fraction of answers containing facts from the wrong time period
-              </td>
-              <td>
-                Manual annotation of 200-sample subset; 2 annotators; κ reported
-              </td>
-            </tr>
-            <tr>
-              <td><strong>Temporal Isolation Score</strong></td>
-              <td>
-                For paired same-entity questions at different times, fraction
-                where system correctly returns distinct answers
-              </td>
-              <td>Custom diagnostic test set (200 pairs)</td>
-            </tr>
-          </tbody>
-        </table>
       </section>
 
       <!-- 7. Expected Results -->
