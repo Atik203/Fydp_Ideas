@@ -504,9 +504,42 @@ footer a { color: #93c5fd; }
 }
 
 /* ── Mobile ───────────────────────────────────────────── */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   header { padding: 2rem 1rem 1.5rem; }
-  section { padding: 1.25rem; }
-  nav a { font-size: .76rem; padding: .35rem .5rem; }
-  h2 { font-size: 1.15rem; }
+  header h1 { font-size: 1.6rem; }
+  section { padding: 1.25rem; margin-bottom: 1rem; }
+  nav ul { gap: 0.3rem; padding: 0.5rem; }
+  nav a { font-size: .8rem; padding: .35rem .6rem; }
+  h2 { font-size: 1.15rem; flex-wrap: wrap; }
+  h3 { font-size: 1rem; }
+  
+  /* Make tables horizontally scrollable */
+  table { 
+    display: block; 
+    overflow-x: auto; 
+    white-space: nowrap; 
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Adjust KPI row for small screens */
+  .kpi-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  .kpi-val { font-size: 1.3rem; }
+  
+  /* Adjust Information Grid */
+  .info-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+  
+  /* Adjust timeline */
+  .timeline { padding-left: 1rem; }
+  .timeline li::before { left: -1.25rem; }
+  
+  /* Cover grid stacking */
+  .cover-grid { flex-direction: column; gap: 0.75rem; align-items: stretch; }
+  .cover-item { text-align: center; }
+  
+  /* Chips */
+  .chip-row { gap: 0.35rem; }
+  .chip { font-size: 0.7rem; padding: 0.2rem 0.6rem; }
 }
