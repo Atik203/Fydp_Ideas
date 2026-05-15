@@ -15,7 +15,18 @@
       <div class="doc-type">
         FYDP Proposal · Idea 1 of 5 · Rank #1 · Score 4.6 / 5.0
       </div>
-      <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; opacity: 0.8; font-weight: 600;">Project Idea Title</div>
+      <div
+        style="
+          font-size: 0.85rem;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          margin-bottom: 0.5rem;
+          opacity: 0.8;
+          font-weight: 600;
+        "
+      >
+        Project Idea Title
+      </div>
       <h1>Trust-Calibrated Multi-Agent Debate<br />for Scientific Reasoning</h1>
       <p class="subtitle">
         Domain: Agentic AI &nbsp;·&nbsp; Multi-Agent Systems &nbsp;·&nbsp;
@@ -116,7 +127,10 @@
           <em>abandon correct initial positions</em> to conform with a
           confidently-stated but incorrect majority opinion. Perez et al. (2023)
           demonstrated sycophancy rates of 40–55% on complex reasoning tasks
-          when a planted incorrect majority opinion was introduced. Wei et al. (2024) further showed this behaviour persists even in the largest frontier models (including next-generation architectures like Gemini 3.1 Pro and GPT-5.5).
+          when a planted incorrect majority opinion was introduced. Wei et al.
+          (2024) further showed this behaviour persists even in the largest
+          frontier models (including next-generation architectures like Gemini
+          3.1 Pro and GPT-5.5).
         </p>
         <h3>2.2 Engineering Complexity</h3>
         <p>
@@ -745,6 +759,555 @@
             system can be run on a single academic GPU within the university's
             existing compute allocation.
           </p>
+        </div>
+      </section>
+      <!-- 11. Supervisor Question Bank -->
+      <section class="accent-teal" id="supervisor-questions">
+        <h2>
+          <span class="section-icon">🧠</span> 11. Supervisor Anticipated
+          Questions
+        </h2>
+
+        <p class="text-muted" style="margin-bottom: 1.5rem">
+          Comprehensive defense preparation covering problem understanding,
+          novelty, methodology, evaluation, feasibility, ethics, and research
+          rigor. Critical questions are marked with the
+          <span class="badge badge-rose">Most Important</span> badge.
+        </p>
+
+        <style>
+          .faq-section {
+            margin-bottom: 2rem;
+          }
+
+          .faq-section h3 {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+          }
+
+          .faq-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--r-sm);
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+          }
+
+          .faq-item summary {
+            padding: 1rem 1.25rem;
+            font-weight: 600;
+            cursor: pointer;
+            background: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            user-select: none;
+          }
+
+          .faq-item summary:hover {
+            background: var(--accent-soft);
+            color: var(--accent);
+          }
+
+          .faq-item .faq-answer {
+            padding: 1rem 1.25rem;
+            font-size: 0.92rem;
+            color: var(--text);
+            border-top: 1px solid var(--border);
+            line-height: 1.7;
+          }
+
+          .faq-badge {
+            margin-left: 1rem;
+            flex-shrink: 0;
+          }
+        </style>
+
+        <!-- 1. Problem & Motivation -->
+        <div class="faq-section">
+          <h3>1. Problem &amp; Motivation</h3>
+
+          <details class="faq-item" open>
+            <summary>
+              What exact problem are you solving?
+              <span class="badge badge-rose faq-badge">Most Important</span>
+            </summary>
+            <div class="faq-answer">
+              We address the problem of
+              <strong
+                >unreliable and overconfident reasoning in Large Language Models
+                (LLMs)</strong
+              >, particularly in scientific and multi-step reasoning tasks.
+              <br /><br />
+
+              Current LLMs often generate plausible but incorrect answers
+              without properly expressing uncertainty, which is dangerous in
+              domains such as:
+              <strong
+                >scientific research, healthcare, finance, and decision-support
+                systems.</strong
+              >
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              Why is this problem important in real-world systems?
+            </summary>
+            <div class="faq-answer">
+              In high-stakes environments, incorrect but confident outputs can
+              lead to misinformation, poor decision-making, and unsafe
+              recommendations.
+              <br /><br />
+
+              A trustworthy AI system must:
+              <strong>
+                distinguish uncertainty, validate evidence, and avoid
+                hallucinated reasoning.
+              </strong>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Why do current LLMs fail in scientific reasoning?</summary>
+            <div class="faq-answer">
+              Current LLMs rely mainly on probabilistic next-token prediction
+              and lack:
+              <strong>
+                explicit verification, evidence-grounded reasoning, and
+                uncertainty calibration.
+              </strong>
+              <br /><br />
+
+              As a result, they may confidently generate unsupported scientific
+              claims.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Why is confidence calibration critical?</summary>
+            <div class="faq-answer">
+              Model confidence is often poorly aligned with actual correctness.
+              <br /><br />
+
+              A model may produce highly confident but incorrect outputs. This
+              is especially risky in scientific and medical domains where users
+              may trust the system blindly.
+            </div>
+          </details>
+        </div>
+
+        <!-- 2. Research Gap -->
+        <div class="faq-section">
+          <h3>2. Research Gap &amp; Novelty</h3>
+
+          <details class="faq-item" open>
+            <summary>
+              What is the research gap in existing literature?
+              <span class="badge badge-rose faq-badge">Most Important</span>
+            </summary>
+            <div class="faq-answer">
+              Existing multi-agent debate systems improve reasoning quality, but
+              most rely on:
+              <strong>majority voting or equal-weighted aggregation.</strong>
+              <br /><br />
+
+              They lack a formal mechanism for:
+              <strong>
+                trust calibration, evidence reliability scoring, and dynamic
+                agent weighting.
+              </strong>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>What is your core novelty?</summary>
+            <div class="faq-answer">
+              We introduce a
+              <strong>Trust-Calibrated Multi-Agent Debate Framework</strong>
+              where:
+              <br /><br />
+
+              <strong>
+                1) Multiple agents debate scientific claims<br />
+                2) External evidence is retrieved and verified<br />
+                3) Dynamic trust scores adjust agent influence during
+                aggregation
+              </strong>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              How is your work different from existing debate systems?
+            </summary>
+            <div class="faq-answer">
+              Existing systems assume all agents are equally reliable.
+              <br /><br />
+
+              Our framework assigns
+              <strong>dynamic trust weights</strong>
+              based on:
+              <strong>
+                evidence support, historical correctness, contradiction
+                analysis, and calibration confidence.
+              </strong>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>What is the key contribution of this research?</summary>
+            <div class="faq-answer">
+              <strong>
+                1) A trust-calibrated debate mechanism<br />
+                2) Evidence-grounded scientific reasoning agents<br />
+                3) Dynamic trust-weighted aggregation<br />
+                4) A reproducible evaluation framework for hallucination and
+                calibration analysis
+              </strong>
+            </div>
+          </details>
+        </div>
+
+        <!-- 3. Research Formulation -->
+        <div class="faq-section">
+          <h3>3. Research Formulation &amp; Engineering Complexity</h3>
+
+          <details class="faq-item" open>
+            <summary>
+              What is your formal research hypothesis?
+              <span class="badge badge-rose faq-badge">Most Important</span>
+            </summary>
+            <div class="faq-answer">
+              Our hypothesis is:
+              <br /><br />
+
+              <strong>
+                "Trust-calibrated multi-agent debate combined with
+                evidence-grounded verification significantly reduces
+                hallucination and improves reasoning calibration compared to
+                standard single-agent and vanilla debate-based LLM systems."
+              </strong>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              Why is this considered a complex engineering problem?
+            </summary>
+            <div class="faq-answer">
+              This problem requires integration of:
+              <br /><br />
+
+              <strong>
+                - Multi-agent coordination<br />
+                - Trust estimation<br />
+                - Retrieval-Augmented Generation (RAG)<br />
+                - Evidence verification<br />
+                - Contradiction detection<br />
+                - Uncertainty-aware aggregation
+              </strong>
+              <br /><br />
+
+              These components must operate together reliably under uncertainty.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              Why is this research and not just prompt engineering?
+            </summary>
+            <div class="faq-answer">
+              The contribution is not based only on prompts.
+              <br /><br />
+
+              We introduce:
+              <strong>
+                a formal trust calibration mechanism, dynamic trust-weighted
+                aggregation, evidence-grounded verification, and measurable
+                evaluation methodology.
+              </strong>
+              <br /><br />
+
+              The focus is on algorithmic reasoning architecture rather than
+              prompt tuning.
+            </div>
+          </details>
+        </div>
+
+        <!-- 4. System Design -->
+        <div class="faq-section">
+          <h3>4. System Design &amp; Architecture</h3>
+
+          <details class="faq-item" open>
+            <summary>
+              How does your system work end-to-end?
+              <span class="badge badge-rose faq-badge">Most Important</span>
+            </summary>
+            <div class="faq-answer">
+              The framework contains multiple specialized agents:
+              <br /><br />
+
+              <strong> Proposer Agent: </strong>
+              Generates initial reasoning and answers.
+              <br /><br />
+
+              <strong> Challenger Agent: </strong>
+              Critiques reasoning and identifies inconsistencies.
+              <br /><br />
+
+              <strong> Verifier Agent: </strong>
+              Retrieves external scientific evidence.
+              <br /><br />
+
+              <strong> Judge Agent: </strong>
+              Aggregates responses using trust-weighted scoring.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Why use multiple agents instead of one LLM?</summary>
+            <div class="faq-answer">
+              A single LLM often reinforces its own reasoning biases.
+              <br /><br />
+
+              Multi-agent systems introduce:
+              <strong>
+                diversity, adversarial critique, self-correction, and
+                collaborative reasoning.
+              </strong>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              Why is debate better than self-consistency prompting?
+            </summary>
+            <div class="faq-answer">
+              Self-consistency generates multiple answers from the same
+              reasoning process.
+              <br /><br />
+
+              Debate introduces:
+              <strong>
+                disagreement, critique, counter-arguments, and iterative
+                verification.
+              </strong>
+              <br /><br />
+
+              This improves hallucination detection and reasoning robustness.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>How are trust scores calculated?</summary>
+            <div class="faq-answer">
+              Trust scores are computed using:
+              <br /><br />
+
+              <strong>
+                - Evidence support strength<br />
+                - Historical correctness<br />
+                - Contradiction penalties<br />
+                - Confidence calibration
+              </strong>
+              <br /><br />
+
+              Scores are dynamically updated after each debate round.
+            </div>
+          </details>
+        </div>
+
+        <!-- 5. Evaluation -->
+        <div class="faq-section">
+          <h3>5. Evaluation &amp; Validation</h3>
+
+          <details class="faq-item" open>
+            <summary>
+              How will you evaluate your system?
+              <span class="badge badge-rose faq-badge">Most Important</span>
+            </summary>
+            <div class="faq-answer">
+              Evaluation will be performed using scientific reasoning
+              benchmarks:
+              <br /><br />
+
+              <strong>
+                - TruthfulQA<br />
+                - SciFact<br />
+                - PubMedQA<br />
+                - SciBench
+              </strong>
+              <br /><br />
+
+              We measure:
+              <strong>
+                accuracy, hallucination rate, calibration quality, and reasoning
+                consistency.
+              </strong>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>What baselines will you compare against?</summary>
+            <div class="faq-answer">
+              <strong>
+                1) Single-agent LLM<br />
+                2) Standard RAG systems<br />
+                3) Vanilla multi-agent debate without trust calibration
+              </strong>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>What ablation studies will you perform?</summary>
+            <div class="faq-answer">
+              We will evaluate:
+              <br /><br />
+
+              <strong>
+                - Without debate<br />
+                - Without retrieval grounding<br />
+                - Without trust calibration<br />
+                - Full proposed framework
+              </strong>
+              <br /><br />
+
+              This identifies the contribution of each component.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>What metrics will you use?</summary>
+            <div class="faq-answer">
+              <strong>
+                - Accuracy<br />
+                - F1-score<br />
+                - Hallucination rate<br />
+                - Expected Calibration Error (ECE)<br />
+                - Brier Score<br />
+                - Contradiction detection accuracy
+              </strong>
+            </div>
+          </details>
+        </div>
+
+        <!-- 6. Feasibility -->
+        <div class="faq-section">
+          <h3>6. Feasibility &amp; Implementation</h3>
+
+          <details class="faq-item" open>
+            <summary>
+              Is this feasible within one year?
+              <span class="badge badge-rose faq-badge">Most Important</span>
+            </summary>
+            <div class="faq-answer">
+              Yes.
+              <br /><br />
+
+              The project uses:
+              <strong>
+                pre-trained LLMs, lightweight retrieval systems, and modular
+                agent orchestration frameworks.
+              </strong>
+              <br /><br />
+
+              Scope is restricted to scientific reasoning to ensure completion
+              within FYDP constraints.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>What tools and frameworks will you use?</summary>
+            <div class="faq-answer">
+              <strong>
+                - Python<br />
+                - PyTorch<br />
+                - HuggingFace Transformers<br />
+                - LangGraph / AutoGen<br />
+                - FAISS / ChromaDB<br />
+                - Open-weight LLMs (Llama/Qwen/Mistral)
+              </strong>
+            </div>
+          </details>
+        </div>
+
+        <!-- 7. Limitations -->
+        <div class="faq-section">
+          <h3>7. Limitations, Ethics &amp; Future Work</h3>
+
+          <details class="faq-item" open>
+            <summary>
+              What are the limitations of your approach?
+              <span class="badge badge-rose faq-badge">Most Important</span>
+            </summary>
+            <div class="faq-answer">
+              The framework still depends on:
+              <strong>
+                retrieval quality, evidence reliability, and underlying LLM
+                behavior.
+              </strong>
+              <br /><br />
+
+              Debate may occasionally amplify incorrect reasoning if all agents
+              share similar biases.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              Can debate systems still generate incorrect answers?
+            </summary>
+            <div class="faq-answer">
+              Yes. Debate reduces hallucinations but cannot eliminate them
+              completely.
+              <br /><br />
+
+              This is why:
+              <strong>
+                trust calibration, evidence grounding, and contradiction
+                analysis
+              </strong>
+              are critical components.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>What ethical concerns exist in your system?</summary>
+            <div class="faq-answer">
+              Potential risks include:
+              <br /><br />
+
+              <strong>
+                - Hallucinated scientific claims<br />
+                - Biased retrieval evidence<br />
+                - Over-reliance on AI reasoning<br />
+                - Misinformation propagation
+              </strong>
+              <br /><br />
+
+              The proposed trust calibration mechanism is designed to reduce
+              these risks.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>How can this work be extended in future?</summary>
+            <div class="faq-answer">
+              Future directions include:
+              <br /><br />
+
+              <strong>
+                - Dynamic working memory<br />
+                - Self-improving scientific agents<br />
+                - Multimodal scientific reasoning<br />
+                - Test-time adaptation<br />
+                - Counterfactual reasoning systems
+              </strong>
+            </div>
+          </details>
         </div>
       </section>
     </main>
