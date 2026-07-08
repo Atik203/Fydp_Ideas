@@ -6,11 +6,11 @@
 
 ## 🎯 Goal
 
-Each team member will review **at least 5 recent papers (2022–2025)** related to our idea.  
+Each team member will review **at least 5 recent papers (2022–2026)** related to our idea.  
 The aim is to **identify what has already been done**, spot **gaps in existing research**, and understand how our idea fits into the current landscape.
 
 > [!IMPORTANT]
-> Focus on **recent papers only** — published within the **last 3–4 years (2022–2025)**. Avoid older papers unless they are a landmark/foundational reference.
+> Focus on **recent papers only** — published within the **last 3–4 years (2022–2026)**. Avoid older papers unless they are a landmark/foundational reference.
 
 ---
 
