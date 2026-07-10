@@ -181,9 +181,8 @@
          HEADER
     ═══════════════════════════════════════════ -->
     <header>
-      <div class="doc-type">
-        FYDP Proposal · Idea 1 of 5 · Rank #1 · Score 4.6 / 5.0
-      </div>
+      <div class="doc-type">FYDP Proposal · Idea 1 of 5 · Project Overview</div>
+
       <div
         style="
           font-size: 0.8rem;
@@ -210,9 +209,11 @@
         <div class="cover-item">
           <span>Target Venue</span>ACL W. / EMNLP Findings
         </div>
-        <div class="cover-item"><span>Novelty Score</span>5 / 5</div>
-        <div class="cover-item"><span>Feasibility Score</span>4 / 5</div>
-        <div class="cover-item"><span>Composite Score</span>4.6 / 5</div>
+        <div class="cover-item">
+          <span>Contribution</span>Systems + Evaluation
+        </div>
+        <div class="cover-item"><span>Duration</span>10 Months</div>
+        <div class="cover-item"><span>Compute</span>1× A100 (Inference)</div>
       </div>
     </header>
 
@@ -251,72 +252,56 @@
       </section>
 
       <section class="accent-teal">
-        <h2>
-          <span class="section-icon">✅</span> Research Verdict After Careful
-          Check
-        </h2>
-        <div class="callout callout-success">
-          <div class="callout-title">
-            Verdict: strong FYDP thesis; Q1 possible but not guaranteed
-          </div>
-          <p class="mb-0">
-            This is a
-            <strong
-              >good and socially valuable CSE final-year thesis idea</strong
-            >
-            because it targets trustworthy scientific reasoning, a real failure
-            mode in agentic LLM systems. For a Q1-level publication, the idea is
-            <strong
-              >publishable only if the paper is framed as a rigorous evaluation
-              + systems contribution</strong
-            >, not as a broad claim that trust calibration solves hallucination.
-            The strongest publishable angle is:
-            <em
-              >when debate agents face a planted false consensus, does
-              evidence-grounded trust preserve correct minority answers better
-              than majority vote, self-consistency, MoA, and confidence-weighted
-              debate?</em
-            >
-          </p>
-        </div>
+        <h2><span class="section-icon">🧭</span> Project Summary</h2>
+        <p>
+          This project builds a
+          <strong>trust-calibrated multi-agent deliberation system</strong> for
+          scientific question answering. When several LLM agents debate, a
+          confident but wrong majority can pressure a correct agent into
+          abandoning its answer — a failure mode called
+          <strong>inter-agent sycophancy</strong>. Our system re-weights each
+          agent's influence <em>during the debate</em> based on whether its
+          claims are verifiable against retrieved scientific evidence, so an
+          evidence-backed minority can survive a false majority. The work is
+          delivered as two connected contributions: a
+          <strong>mitigation mechanism</strong> (the trust-weighting rule) and
+          an <strong>open evaluation harness</strong> (a reproducible
+          sycophancy-injection protocol with the CCR / MPR / ECR metrics).
+        </p>
 
         <div class="two-col">
           <div class="col-box">
-            <h4>Why It Is Noble / Worth Doing</h4>
+            <h4>What We Build</h4>
             <p class="mb-0">
-              It reduces overconfident false consensus in scientific QA, where
-              wrong collective agreement can mislead students, researchers, and
-              downstream decision-support systems. The work is aligned with AI
+              A heterogeneous 3-agent debate pipeline with atomic-claim
+              retrieval, a bounded evidence-weighted trust update, and
+              trust-weighted adjudication instead of majority vote. Fully
+              inference-only (no model training).
+            </p>
+          </div>
+          <div class="col-box">
+            <h4>Why It Matters</h4>
+            <p class="mb-0">
+              Confident false consensus in scientific QA can mislead students,
+              researchers, and decision-support tools. The work aligns with AI
               safety, trustworthy NLP, and reproducible evaluation.
             </p>
           </div>
           <div class="col-box">
-            <h4>Main Q1 Risk</h4>
+            <h4>How We Evaluate</h4>
             <p class="mb-0">
-              Reviewers will reject overclaimed novelty. The proposal must avoid
-              saying no prior work uses trust, confidence, or retrieval;
-              instead, claim the narrower contribution:
-              <strong
-                >session-level, evidence-verified trust updates under an
-                explicit sycophancy-stress protocol</strong
-              >.
+              Nine baselines (incl. Self-Consistency, MoA, iMAD) across
+              adversarial (BrokenMath / BrokenArXiv / HLE) and stable (GPQA /
+              MMLU-Pro) benchmarks, with 3 seeds, 95% CIs, effect sizes, and a
+              small human study.
             </p>
           </div>
           <div class="col-box">
-            <h4>Required for a Serious Submission</h4>
+            <h4>Scope &amp; Target</h4>
             <p class="mb-0">
-              Pre-register the injection protocol, release code/prompts, report
-              negative cases, compare against simple baselines, and use
-              versioned public datasets rather than vague benchmark names.
-            </p>
-          </div>
-          <div class="col-box">
-            <h4>Recommended Target</h4>
-            <p class="mb-0">
-              FYDP thesis: <strong>excellent fit</strong>. First paper: EMNLP
-              Findings / TMLR / ACL workshop is realistic; ACL/EMNLP main or Q1
-              journal becomes plausible only with strong effect sizes, careful
-              statistics, and an open reproducibility package.
+              10-month FYDP on a single A100. Realistic first-paper target:
+              ACL/NeurIPS workshop or EMNLP-Findings-tier venue; IEEE / Springer
+              / Q2 journal as alternatives with full results.
             </p>
           </div>
         </div>
@@ -338,21 +323,41 @@
         </p>
 
         <div class="callout callout-success">
-          <div class="callout-title">🎯 Three Core Research Contributions</div>
+          <div class="callout-title">🎯 Positioning &amp; Contributions</div>
+          <p class="mb-0" style="margin-bottom: 0.5rem">
+            Recent work has <em>diagnosed and measured</em> inter-agent
+            sycophancy (Yao et al., 2025 — Peacemaker or Troublemaker) and the
+            correct-minority-suppression effect (He et al., 2026 — Minority
+            Sentinel). Our contribution is the missing
+            <strong>mitigation</strong> side: an in-session, evidence-grounded
+            mechanism, plus an open evaluation harness. We do <em>not</em> claim
+            to be the first to identify the phenomenon.
+          </p>
           <ul class="mb-0">
             <li>
-              <strong>Trust-Calibrated Evidence-Grounded Aggregation</strong> —
-              dynamic, evidence-weighted anti-sycophancy aggregation (primary
-              systems contribution).
+              <strong
+                >C1 — Trust-Calibrated Evidence-Grounded Aggregation
+                (primary).</strong
+              >
+              A bounded, dynamic, evidence-weighted trust rule that re-weights
+              agents during the debate — the mitigation mechanism absent from
+              the diagnosis papers above.
             </li>
             <li>
-              <strong>Progressive Retrieval for Scientific Deliberation</strong>
-              — iterative atomic-claim verification architecture.
+              <strong
+                >C2 — Open Sycophancy-Stress Evaluation Harness
+                (co-primary).</strong
+              >
+              A pre-registered injection protocol + the CCR / MPR / ECR metrics
+              + a 9-baseline suite, released for reuse.
             </li>
             <li>
-              <strong>Sycophancy-Focused Evaluation Framework</strong> — novel
-              metrics CCR, MPR, ECR elevating evaluation beyond standard
-              accuracy.
+              <strong
+                >C3 — Supporting: Progressive, source-partitioned
+                retrieval</strong
+              >
+              for atomic-claim verification, plus an empirical study of
+              <em>when</em> evidence-grounded trust helps.
             </li>
           </ul>
         </div>
@@ -366,14 +371,17 @@
 
         <h3>2.1 Real-World Problem</h3>
         <p>
-          Multi-agent debate (Du et al., 2023; Liang et al., 2023) suffers from
-          a well-documented failure mode — <strong>agentic sycophancy</strong>:
-          agents abandon correct positions to conform with a confidently-stated
-          but wrong majority. Perez et al. (2023) measured sycophancy rates of
-          <strong>40–55%</strong> under adversarial majority injection. Wei et
-          al. (2024) confirmed persistence in frontier models. Scientific
-          reasoning is the target domain because it is evidence-intensive,
-          high-stakes, and maximally sensitive to hallucinated consensus.
+          Multi-agent debate (Du et al., 2023) suffers from a well-documented
+          failure mode — <strong>inter-agent sycophancy</strong>: agents abandon
+          correct positions to conform with a confidently-stated but wrong
+          majority. General sycophancy in LLMs (the tendency to agree with a
+          stated view) is well established (Perez et al., 2023; Malmqvist,
+          2024). For the specifically <em>inter-agent</em> case, Yao et al.
+          (2025) formalise and measure it in debate, and He et al. (2026) show a
+          correct minority is suppressed in roughly one in four disagreements.
+          Scientific reasoning is our target domain because it is
+          evidence-intensive, high-stakes, and maximally sensitive to
+          hallucinated consensus.
         </p>
 
         <h3>2.2 Engineering Complexity (Washington Accord Level)</h3>
@@ -402,9 +410,10 @@
           <div class="col-box">
             <h4>Challenge D — Heterogeneous Agents</h4>
             <p class="mb-0">
-              Trust calibration must be model-agnostic across Qwen3.6-27B,
-              Mistral-Small-3.2-24B, and Phi-4-Reasoning, with optional
-              extension to larger models.
+              Trust calibration must be model-agnostic across ≈14–32B
+              open-weight models from different families (e.g., a Qwen, a
+              Mistral-Small, and a Phi model; exact checkpoints finalised in
+              Phase 0), with optional extension to larger models.
             </p>
           </div>
         </div>
@@ -460,14 +469,14 @@
               <td>Single-agent; no cross-agent trust dynamics</td>
             </tr>
             <tr>
-              <td><strong>MoA</strong> (Li et al.)</td>
+              <td><strong>MoA</strong> (Wang et al., 2406.04692)</td>
               <td>2024</td>
               <td>Multi-model proposers + static aggregator</td>
               <td>Equal-weight aggregation; no evidence-grounded trust</td>
             </tr>
             <tr>
               <td><strong>iMAD</strong> (Fan et al., arXiv 2511.11306)</td>
-              <td>2025 · AAAI 2026 Oral</td>
+              <td>2025 · venue TBC</td>
               <td>
                 Learned classifier (41 linguistic self-critique features)
                 decides <em>whether</em> to trigger debate; token-efficient
@@ -560,9 +569,11 @@
           <div class="col-box">
             <h4>4.2 Agent Pool (N = 3)</h4>
             <p class="mb-0">
-              One agent each from Qwen3.6-27B, Mistral-Small-3.2-24B, and
-              Phi-4-Reasoning (Mistral-Small-4-119B optional if compute allows).
-              Each maintains its position and a trust vector
+              One agent each from three different open-weight families (≈14–32B;
+              e.g., a Qwen, a Mistral-Small, and a Phi model — exact checkpoints
+              pinned in Phase 0), with a larger model optional if compute
+              allows. Each maintains its position and a trust vector
+
               <code>T ∈ ℝ³</code>, initialised uniformly at <code>1/N</code>.
             </p>
           </div>
@@ -601,9 +612,14 @@
         >
           S<sub>i</sub><sup>(t+1)</sup> = S<sub>i</sub><sup>(t)</sup> + α ·
           V<sub>i</sub><sup>(t)</sup> − β · H<sub>i</sub><sup>(t)</sup>; &nbsp;
-          T<sub>i</sub><sup>(t+1)</sup> = clamp(softmax(S)<sub>i</sub>, 0.1,
-          0.9)
+          T̃<sub>i</sub> = softmax(S)<sub>i</sub>; &nbsp; clamp(T̃<sub>i</sub>,
+          0.1, 0.9); &nbsp; renormalise so Σ T<sub>i</sub> = 1
         </div>
+        <p style="font-size: 0.78rem; color: #555; margin: 0.2rem 0 0.4rem">
+          Operator order is explicit —
+          <strong>softmax → clamp [0.1, 0.9] → renormalise</strong>. Boundedness
+          after renormalisation is what Proposition 1 proves.
+        </p>
 
         <div class="two-col">
           <div class="col-box">
@@ -650,8 +666,10 @@
         <p>
           The trust update rule is a formally specified
           scoring-and-normalisation mechanism with boundedness and a
-          probabilistic interpretation. Three propositions ground the mechanism;
-          full proofs are in Appendix A.
+          probabilistic interpretation. Proposition 1 (boundedness) is proven;
+          Propositions 2–3 are stated as <em>conditional design properties</em>
+          (they hold when evidence favours the correct agent), not global
+          convergence theorems. Proof sketches are in Appendix A.
         </p>
 
         <!-- Prop 1 -->
@@ -761,14 +779,14 @@ Minority trust grows   (Vᵢ    &gt; θ_v  →  Sᵢ increases)
           <div class="info-card">
             <div class="ic-label">Primary Agent</div>
             <div class="ic-value">
-              Qwen3.6-27B (primary) / Qwen3.6-35B-A3B (optional)
+              Qwen-family ~32B (e.g., Qwen3-32B); checkpoint pinned in Phase 0
             </div>
             <div class="ic-sub">4-bit quantized, vLLM inference</div>
           </div>
           <div class="info-card">
             <div class="ic-label">Secondary Agent</div>
             <div class="ic-value">
-              Mistral-Small-3.2-24B or Mistral-Small-4-119B (if compute allows)
+              Mistral-Small-3.2-24B (a larger model optional if compute allows)
             </div>
             <div class="ic-sub">Heterogeneous family</div>
           </div>
@@ -1027,7 +1045,7 @@ C4 (No New Evidence):       No retrieved doc with relevance > 0.75
           marginal cost.
         </p>
 
-        <h4>B6 — Mixture of Agents (Li et al., arXiv 2406.04692)</h4>
+        <h4>B6 — Mixture of Agents (Wang et al., arXiv 2406.04692)</h4>
         <table>
           <thead>
             <tr>
@@ -1072,14 +1090,14 @@ C4 (No New Evidence):       No retrieved doc with relevance > 0.75
         </p>
 
         <h4>
-          B9 — iMAD (Intelligent Multi-Agent Debate, Fan et al., AAAI 2026,
+          B9 — iMAD (Intelligent Multi-Agent Debate, Fan et al., 2025,
           Reimplemented)
         </h4>
         <p>
           <strong>Reference:</strong> Fan, Yoon &amp; Ji, "iMAD: Intelligent
           Multi-Agent Debate for Efficient and Accurate LLM Inference," arXiv
-          2511.11306 (AAAI 2026 Oral). Reimplemented from the published
-          description.
+          2511.11306 (2025; peer-reviewed venue to be confirmed). Reimplemented
+          from the published description.
         </p>
         <p>
           <strong>Why this comparison is critical (corrected framing):</strong>
@@ -1199,7 +1217,7 @@ C4 (No New Evidence):       No retrieved doc with relevance > 0.75
                   >B6 ★</span
                 >
               </td>
-              <td>Mixture of Agents (Li et al., 2024)</td>
+              <td>Mixture of Agents (Wang et al., 2024)</td>
               <td>Multi-model static synthesis foil</td>
             </tr>
             <tr>
@@ -1229,7 +1247,7 @@ C4 (No New Evidence):       No retrieved doc with relevance > 0.75
               </td>
               <td>
                 <strong
-                  >iMAD — Intelligent Multi-Agent Debate (Fan et al., AAAI 2026;
+                  >iMAD — Intelligent Multi-Agent Debate (Fan et al., 2025;
                   reimplemented)</strong
                 >
                 <br />
@@ -1803,9 +1821,11 @@ C4 (No New Evidence):       No retrieved doc with relevance > 0.75
               abandon correct initial positions to conform with a
               confidently-stated but wrong majority. This is dangerous in
               scientific reasoning, healthcare, and clinical decision support
-              where a confident wrong consensus is worse than abstaining. Perez
-              et al. (2023): 40–55 % sycophancy rate under planted majority
-              injection. Wei et al. (2024): persists in frontier models.
+              where a confident wrong consensus is worse than abstaining. For
+              the inter-agent case specifically, Yao et al. (2025) formalise and
+              measure it, and He et al. (2026) find the minority is correct in
+              ≈1 of 4 disagreements. (General single-turn sycophancy: Perez et
+              al., 2023.)
             </div>
           </details>
 
@@ -1850,9 +1870,11 @@ C4 (No New Evidence):       No retrieved doc with relevance > 0.75
               mechanism —
               <strong>Sᵢ(t+1)=Sᵢ(t)+αVᵢ−βHᵢ; T=clamp(softmax(S))</strong> — that
               dynamically re-weights agent influence within the same debate
-              session based on claim verifiability. No existing system (MAD,
-              MoA, iMAD, PROClaim) does this. Novel metrics CCR, MPR, ECR are
-              independently usable contributions.
+              session based on claim verifiability. Prior work diagnoses the
+              problem (Yao et al., 2025; He et al., 2026) or optimises
+              efficiency (MoA; iMAD), but none provides an in-session,
+              evidence-grounded trust rule. The open CCR/MPR/ECR harness is a
+              second, independently usable contribution.
             </div>
           </details>
 
@@ -2046,7 +2068,7 @@ C4 (No New Evidence):       No retrieved doc with relevance > 0.75
     <footer>
       <p>
         <strong>FYDP Research Proposal 2026–2027</strong> &nbsp;·&nbsp; Idea 1
-        of 5 &nbsp;·&nbsp; Score: 4.6 / 5.0 &nbsp;·&nbsp;
+        of 5 &nbsp;·&nbsp;
         <a href="idea2.html">Next: Idea 2 →</a>
       </p>
     </footer>
