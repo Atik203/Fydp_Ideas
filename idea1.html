@@ -1460,94 +1460,149 @@ C4 (No New Evidence):       No retrieved doc with relevance > 0.75
            9. EXECUTION PLAN
       ══════════════════════════════════ -->
       <section class="accent-amber">
-        <h2><span class="section-icon">📅</span> 9. 10-Month Execution Plan</h2>
+        <h2>
+          <span class="section-icon">📅</span> 9. 10-Month Execution Plan (Jul
+          2026 – Apr 2027)
+        </h2>
+        <p class="text-muted" style="font-size: 0.83rem; margin-bottom: 0.6rem">
+          Start: <strong>July 2026</strong>. Milestones are
+          <strong>result-neutral</strong> (they commit to running the
+          measurement, not to a particular outcome). A Phase 0 reproduction step
+          and a competitor-replication gate have been added; the old Phase 3 is
+          split into 3a/3b with February 2027 as an explicit buffer.
+        </p>
 
         <table class="gantt-table">
           <thead>
             <tr>
               <th>Phase</th>
-              <th>Months</th>
+              <th>Month(s)</th>
               <th>Key Tasks</th>
-              <th>Deliverable</th>
+              <th>Deliverable / Gate</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>Ph 1</strong></td>
-              <td>1–2</td>
+              <td><strong>Ph 0</strong></td>
+              <td>Jul 2026</td>
               <td>
-                Lit review (30+ papers); baseline MAD on BrokenMath/GPQA; env
-                setup (vLLM, LangGraph);
-                <strong>P1 Proposition 1 proof</strong>;
-                <strong>P2 pilot validation (κ check)</strong>
+                Literature freeze (incl. Peacemaker/Troublemaker, Minority
+                Sentinel, iMAD, HCP-MAD); env setup (vLLM, LangGraph); verify
+                model IDs; <strong>reproduce vanilla MAD (Du 2023)</strong>
               </td>
-              <td>Baseline Report + Protocol Validated</td>
+              <td>Gate 0: base debate loop reproduces; references.bib</td>
+            </tr>
+            <tr>
+              <td><strong>Ph 1</strong></td>
+              <td>Aug 2026</td>
+              <td>
+                Injection protocol; 50-Q pilot (κ check); baselines B1–B4;
+                <strong>corrected Proposition 1 proof</strong>
+                (softmax→clamp→renorm)
+              </td>
+              <td>Gate 1 (Go/No-Go): κ ≥ 0.70 &amp; baseline CCR ≥ 0.30</td>
             </tr>
             <tr>
               <td><strong>Ph 2</strong></td>
-              <td>3–4</td>
+              <td>Sep–Oct 2026</td>
               <td>
-                RAG module; atomic claim decomposition; cross-encoder
-                integration; trust function v1; <strong>P1 Props 2–3</strong>;
-                <strong>P3 SC + MoA baselines set up</strong>;
-                <strong>B9 iMAD reimplementation</strong>
+                Atomic-claim decomposition; <strong>counterbalanced</strong>
+                source-partitioned RAG; trust function v1; baselines B5 (SC), B6
+                (MoA), B9 (iMAD); replicate Minority-Sentinel / Peacemaker
+                metrics
               </td>
-              <td>Working Prototype</td>
+              <td>
+                Gate 2: prototype + first CCR/MPR measurement (any direction) +
+                competitor comparison
+              </td>
             </tr>
             <tr>
-              <td><strong>Ph 3</strong></td>
-              <td>5–6</td>
+              <td><strong>Ph 2→3</strong></td>
+              <td>Nov 2026</td>
               <td>
-                Full experiment matrix (9 conditions × 5 datasets × 3 seeds);
-                ablations; hyperparameter sweep; N-scaling study
+                Mid-project supervisor report; freeze design; dry-run matrix on
+                one dataset
               </td>
-              <td>Experimental Results Table</td>
+              <td>📌 FYDP-1 defence (proposal + prototype)</td>
+            </tr>
+            <tr>
+              <td><strong>Ph 3a</strong></td>
+              <td>Dec 2026</td>
+              <td>
+                Main matrix: core conditions × primary datasets (BrokenMath,
+                BrokenArXiv, HLE) × 3 seeds; 95% CIs
+              </td>
+              <td>Primary results table</td>
+            </tr>
+            <tr>
+              <td><strong>Ph 3b</strong></td>
+              <td>Jan 2027</td>
+              <td>
+                4 ablations; α,β sweep; N ∈ {2,3,5} scaling; validity checks
+                V1–V3; GPQA/MMLU-Pro accuracy runs
+              </td>
+              <td>Gate 3: results freeze with CIs + effect sizes</td>
             </tr>
             <tr>
               <td><strong>Ph 4</strong></td>
-              <td>7–8</td>
+              <td>Feb 2027</td>
               <td>
-                Human eval (n=60); error analysis; heterogeneous agent
-                experiments; ECR calibration; trust trajectory figures
+                Human eval (n=60, κ); ECR calibration vs
+                <strong>ground truth</strong>; failure analysis;
+                trust-trajectory figures. <em>Explicit buffer month.</em>
               </td>
-              <td>Complete Ablation + Human Eval</td>
+              <td>Complete Ablation + Human Eval package</td>
             </tr>
             <tr>
               <td><strong>Ph 5</strong></td>
-              <td>9–10</td>
+              <td>Mar–Apr 2027</td>
               <td>
-                Paper writing; thesis; reproducibility package; supervisor
-                review; submission to EMNLP Findings / TMLR
+                Thesis + paper; reproducibility package; supervisor review;
+                submission to EMNLP Findings / TMLR / workshop
               </td>
-              <td>Submitted Paper + FYDP Thesis</td>
+              <td>📌 Submitted Paper + FYDP-2 final defence</td>
             </tr>
           </tbody>
         </table>
 
         <ul class="timeline" style="margin-top: 1rem">
           <li>
-            <span class="phase">M2 — End of Phase 1:</span>
-            Baseline sycophancy ≥ 30 % confirmed; κ ≥ 0.70 on pilot.
+            <span class="phase">Jul 2026 — Gate 0:</span>
+            Vanilla MAD reproduced on a small GPQA slice.
+            <div><span class="deliverable">Base loop works</span></div>
+          </li>
+          <li>
+            <span class="phase">Aug 2026 — Gate 1 (Go/No-Go):</span>
+            κ ≥ 0.70 on pilot; baseline CCR ≥ 0.30 confirmed.
             <div><span class="deliverable">Go/No-Go checkpoint</span></div>
           </li>
           <li>
-            <span class="phase">M4 — End of Phase 2:</span>
-            Trust function shows ≥ 10 % CCR reduction.
+            <span class="phase">Oct 2026 — Gate 2:</span>
+            Trust mechanism live; first anti-sycophancy measurement + competitor
+            comparison.
             <div>
               <span class="deliverable">Mid-project supervisor report</span>
             </div>
           </li>
           <li>
-            <span class="phase">M7 — End of Phase 3:</span>
+            <span class="phase">Nov 2026 — FYDP-1 defence.</span>
+            <div>
+              <span class="deliverable"
+                >Proposal + prototype + interim results</span
+              >
+            </div>
+          </li>
+          <li>
+            <span class="phase">Jan 2027 — Gate 3:</span>
             Full results table with CIs; all ablations complete.
             <div>
               <span class="deliverable">Results freeze; begin writing</span>
             </div>
           </li>
           <li>
-            <span class="phase">M10 — End of Phase 5:</span>
+            <span class="phase">Apr 2027 — End:</span>
             Paper submitted; thesis submitted.
-            <div><span class="deliverable">Final FYDP defence</span></div>
+            <div><span class="deliverable">Final FYDP-2 defence</span></div>
           </li>
         </ul>
 
