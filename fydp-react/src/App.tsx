@@ -1,11 +1,11 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ThemeProvider } from '@/context/ThemeContext';
-import { SiteNav } from '@/components/layout/SiteNav';
-import { SiteFooter } from '@/components/layout/SiteFooter';
-import { OverviewPage } from '@/pages/OverviewPage';
-import { IdeaDetailPage } from '@/pages/IdeaDetailPage';
-import { RoadmapPage } from '@/pages/RoadmapPage';
-import { ProposalPage } from '@/pages/ProposalPage';
+import { SiteFooter } from "@/components/layout/SiteFooter";
+import { SiteNav } from "@/components/layout/SiteNav";
+import { ThemeProvider } from "@/context/ThemeContext";
+import { IdeaDetailPage } from "@/pages/IdeaDetailPage";
+import { OverviewPage } from "@/pages/OverviewPage";
+import { ProposalPage } from "@/pages/ProposalPage";
+import { RoadmapPage } from "@/pages/RoadmapPage";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
