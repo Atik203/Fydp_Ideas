@@ -35,8 +35,85 @@ export function Idea1Content() {
         </Callout>
       </Section>
 
+      {/* ───────────── 0. Research Design Decisions & Assumptions ───────────── */}
+      <Section accent="amber" className="animate-fade-up animate-delay-1">
+        <SectionTitle icon="⚙️">0. Research Design Decisions &amp; Assumptions</SectionTitle>
+
+        <TwoCol>
+          <ColBox>
+            <h4 className="text-sm font-bold mb-2">Why this problem</h4>
+            <p className="text-sm leading-relaxed">
+              Multi-agent debate (MAD) improves LLM reasoning but has a documented failure mode: agents
+              abandon correct answers under social pressure from a confident wrong majority. This is the
+              single biggest reason MAD's gains don't always materialize, especially in scientific QA
+              where a confidently wrong consensus is worse than an honest "uncertain."
+            </p>
+          </ColBox>
+          <ColBox>
+            <h4 className="text-sm font-bold mb-2">Why it matters</h4>
+            <p className="text-sm leading-relaxed">
+              As LLMs get deployed as research assistants and decision-support tools, false consensus
+              among cooperating AI agents is a trust and safety problem — it fails silently and confidently.
+            </p>
+          </ColBox>
+        </TwoCol>
+
+        <Callout variant="gap" title="🕳️ Verified Research Gap" className="mt-4">
+          <p className="mb-2">
+            <strong>No existing framework dynamically re-weights agent trust during a debate based on
+            external evidence.</strong> Diagnosis exists (Yao et al. 2025), efficiency optimisation exists
+            (iMAD, AAAI 2026), static aggregation exists (MoA, ICLR 2025 Spotlight) — but nothing ties
+            an agent's influence to <em>real-time verifiability of claims against external evidence</em>.
+          </p>
+        </Callout>
+
+        <h4 className="text-sm font-bold mt-5 mb-3">Why Multi-Agent Over Single LLM?</h4>
+        <p className="text-sm mb-4">
+          A single strong model still hallucinates confidently and has no internal mechanism to be
+          challenged. Multi-agent debate introduces adversarial critique — but only if aggregation doesn't
+          default to majority vote, which is precisely the mechanism causing sycophantic collapse. This
+          motivates <strong>heterogeneous, independently evidence-checked agents</strong>, not multiple
+          instances of the same model.
+        </p>
+
+        <h4 className="text-sm font-bold mb-3">Core Research Assumptions</h4>
+        <div className="space-y-2 mb-4">
+          {[
+            ['Assumption 1', 'Claims during debate can be decomposed into checkable atomic propositions (moderate risk — some claims are compound or context-dependent).'],
+            ['Assumption 2', 'Retrieval against PubMed/ArXiv/Semantic Scholar can reliably support/contradict claims within the debate time budget (moderate risk — retrieval noise, sparse coverage).'],
+            ['Assumption 3', 'Trust weight changes actually alter final output, not just sit in context ignored — highest risk, the whole mechanism lives or dies on this. Must be piloted in Month 1.'],
+            ['Assumption 4', 'Heterogeneous model families reduce, but don\'t eliminate, correlated hallucination (accepted as a named limitation).'],
+          ].map(([label, text]) => (
+            <div key={label} className="flex gap-3 items-start bg-[#f0f2f7] dark:bg-[rgba(255,255,255,0.04)] border border-[#e2e8f0] dark:border-[rgba(255,255,255,0.1)] rounded-md p-3">
+              <span className="inline-flex items-center justify-center w-9 h-7 rounded bg-[#f08c00] text-white font-bold text-xs flex-shrink-0">{label}</span>
+              <p className="text-sm mb-0">{text}</p>
+            </div>
+          ))}
+        </div>
+
+        <h4 className="text-sm font-bold mb-3">Alternatives Considered &amp; Rejected</h4>
+        <TwoCol>
+          <ColBox>
+            <h4 className="text-sm font-semibold mb-1 text-[#e03131] dark:text-[#fca5a5]">✗ Post-hoc Classifier (Minority Sentinel-style)</h4>
+            <p className="text-xs text-[#64748b] dark:text-[#94a3b8] mb-0">Intervenes after debate ends, not during. Valid but separate contribution space — we position against it, not duplicate it.</p>
+          </ColBox>
+          <ColBox>
+            <h4 className="text-sm font-semibold mb-1 text-[#e03131] dark:text-[#fca5a5]">✗ Fine-tuning Agents</h4>
+            <p className="text-xs text-[#64748b] dark:text-[#94a3b8] mb-0">Rejected due to compute cost and lack of cross-model generalization. Also conflates "sycophancy reduction" with "evidence grounding" — different mechanisms.</p>
+          </ColBox>
+          <ColBox>
+            <h4 className="text-sm font-semibold mb-1 text-[#e03131] dark:text-[#fca5a5]">✗ Confidence-Based Re-weighting (iMAD-style)</h4>
+            <p className="text-xs text-[#64748b] dark:text-[#94a3b8] mb-0">Confidence is self-reported from the same context that can be manipulated by injected pressure — exactly the vulnerability we target.</p>
+          </ColBox>
+          <ColBox>
+            <h4 className="text-sm font-semibold mb-1 text-[#0ca678] dark:text-[#6ee7b7]">✓ Our Approach</h4>
+            <p className="text-xs text-[#64748b] dark:text-[#94a3b8] mb-0">Ties agent influence to something <em>external</em> and <em>independent</em> of debate social dynamics — the actual causal lever needed to break sycophantic collapse, not just detect it.</p>
+          </ColBox>
+        </TwoCol>
+      </Section>
+
       {/* ───────────── 2. Research Motivation ───────────── */}
-      <Section className="animate-fade-up animate-delay-1">
+      <Section className="animate-fade-up animate-delay-2">
         <SectionTitle icon="🔬">2. Research Motivation</SectionTitle>
         <TwoCol>
           <ColBox>
@@ -62,7 +139,7 @@ export function Idea1Content() {
             <thead>
               <tr>
                 {['Work', 'Year', 'What it does', 'What\'s missing'].map((h) => (
-                  <th key={h} className="p-3 text-left font-bold bg-[#f1f5f9] border-b-2 border-[#e2e8f0] whitespace-nowrap">{h}</th>
+                  <th key={h} className="p-3 text-left font-bold bg-[#f1f5f9] dark:bg-[rgba(255,255,255,0.06)] border-b-2 border-[#e2e8f0] dark:border-[rgba(255,255,255,0.15)] whitespace-nowrap">{h}</th>
                 ))}
               </tr>
             </thead>
@@ -73,7 +150,7 @@ export function Idea1Content() {
                 ['iMAD (Fan et al.)', '2026', 'Decides when to debate (efficiency)', 'Doesn\'t decide whom to trust once debating'],
                 ['MoA (Wang et al.)', '2025', 'Static multi-model aggregation', 'No evidence grounding or dynamic trust'],
               ].map(([work, yr, does, missing], i) => (
-                <tr key={i} className="border-b border-[#e2e8f0] last:border-0 hover:bg-[#dce4ff] even:bg-[#f8fafc] transition-colors">
+                <tr key={i} className="border-b border-[#e2e8f0] dark:border-[rgba(255,255,255,0.08)] last:border-0 hover:bg-[#dce4ff] dark:hover:bg-[rgba(59,91,219,0.12)] even:bg-[#f8fafc] dark:even:bg-[rgba(255,255,255,0.03)] transition-colors">
                   <td className="p-3 font-medium whitespace-nowrap">{work}</td>
                   <td className="p-3 whitespace-nowrap">{yr}</td>
                   <td className="p-3">{does}</td>
@@ -97,19 +174,19 @@ export function Idea1Content() {
         <TwoCol>
           <ColBox>
             <h4 className="text-sm font-semibold mt-0 mb-2">Challenge A — Real-time Verification</h4>
-            <p className="text-sm text-[#64748b] mb-0">Decompose claims into atomic propositions; retrieve supporting/contradicting evidence within &lt;10 s per turn.</p>
+            <p className="text-sm text-[#64748b] dark:text-[#94a3b8] mb-0">Decompose claims into atomic propositions; retrieve supporting/contradicting evidence within &lt;10 s per turn.</p>
           </ColBox>
           <ColBox>
             <h4 className="text-sm font-semibold mt-0 mb-2">Challenge B — Trust Stability</h4>
-            <p className="text-sm text-[#64748b] mb-0">Design update rule avoiding degenerate equilibria (full collapse or single-agent dominance).</p>
+            <p className="text-sm text-[#64748b] dark:text-[#94a3b8] mb-0">Design update rule avoiding degenerate equilibria (full collapse or single-agent dominance).</p>
           </ColBox>
           <ColBox>
             <h4 className="text-sm font-semibold mt-0 mb-2">Challenge C — Behavioral Effectiveness</h4>
-            <p className="text-sm text-[#64748b] mb-0">Ensure trust weights change model outputs, not merely appear in context and get ignored by attention. <strong>Highest risk.</strong></p>
+            <p className="text-sm text-[#64748b] dark:text-[#94a3b8] mb-0">Ensure trust weights change model outputs, not merely appear in context and get ignored by attention. <strong>Highest risk.</strong></p>
           </ColBox>
           <ColBox>
             <h4 className="text-sm font-semibold mt-0 mb-2">Challenge D — Heterogeneous Agents</h4>
-            <p className="text-sm text-[#64748b] mb-0">Trust calibration must be model-agnostic across ~14–32B open-weight models from different families.</p>
+            <p className="text-sm text-[#64748b] dark:text-[#94a3b8] mb-0">Trust calibration must be model-agnostic across ~14–32B open-weight models from different families.</p>
           </ColBox>
         </TwoCol>
       </Section>
@@ -187,7 +264,7 @@ Final Output: Answer + Evidence Citations + Trust Trajectory + Per-Agent Reasoni
             <thead>
               <tr>
                 {['Property', 'Detail'].map((h) => (
-                  <th key={h} className="p-2.5 text-left font-bold bg-[#f1f5f9] border-b-2 border-[#e2e8f0]">{h}</th>
+                  <th key={h} className="p-2.5 text-left font-bold bg-[#f1f5f9] dark:bg-[rgba(255,255,255,0.06)] border-b-2 border-[#e2e8f0] dark:border-[rgba(255,255,255,0.15)]">{h}</th>
                 ))}
               </tr>
             </thead>
@@ -200,7 +277,7 @@ Final Output: Answer + Evidence Citations + Trust Trajectory + Per-Agent Reasoni
                 ['Recovery', 'None needed — failure is cost inefficiency, not a correctness bug'],
                 ['If removed', 'Debate runs on every question. No correctness impact, only ~9 vs ~1 forward passes on easy questions'],
               ].map(([prop, detail], i) => (
-                <tr key={i} className="border-b border-[#e2e8f0] last:border-0 hover:bg-[#dce4ff] even:bg-[#f8fafc] transition-colors">
+                <tr key={i} className="border-b border-[#e2e8f0] dark:border-[rgba(255,255,255,0.08)] last:border-0 hover:bg-[#dce4ff] dark:hover:bg-[rgba(59,91,219,0.12)] even:bg-[#f8fafc] dark:even:bg-[rgba(255,255,255,0.03)] transition-colors">
                   <td className="p-2.5 font-medium whitespace-nowrap">{prop}</td>
                   <td className="p-2.5">{detail}</td>
                 </tr>
@@ -213,19 +290,19 @@ Final Output: Answer + Evidence Citations + Trust Trajectory + Per-Agent Reasoni
         <TwoCol>
           <ColBox>
             <h4 className="text-sm font-semibold mb-1">Qwen3-32B (4-bit)</h4>
-            <p className="text-xs text-[#64748b] mb-0">Strong reasoning, open-weight, fits single A100 quantized. Upgrade path: larger Qwen if compute allows.</p>
+            <p className="text-xs text-[#64748b] dark:text-[#94a3b8] mb-0">Strong reasoning, open-weight, fits single A100 quantized. Upgrade path: larger Qwen if compute allows.</p>
           </ColBox>
           <ColBox>
             <h4 className="text-sm font-semibold mb-1">Mistral-Small-3.2-24B</h4>
-            <p className="text-xs text-[#64748b] mb-0">Different training lineage → genuine heterogeneity, not just a second Qwen checkpoint. Smaller size is intentional (mirrors real-world heterogeneous deployment).</p>
+            <p className="text-xs text-[#64748b] dark:text-[#94a3b8] mb-0">Different training lineage → genuine heterogeneity, not just a second Qwen checkpoint. Smaller size is intentional (mirrors real-world heterogeneous deployment).</p>
           </ColBox>
           <ColBox>
             <h4 className="text-sm font-semibold mb-1">Phi-4-Reasoning</h4>
-            <p className="text-xs text-[#64748b] mb-0">Reasoning-specialized training — adds a third distinct "cognitive style." Newer model, less battle-tested in MAD literature.</p>
+            <p className="text-xs text-[#64748b] dark:text-[#94a3b8] mb-0">Reasoning-specialized training — adds a third distinct "cognitive style." Newer model, less battle-tested in MAD literature.</p>
           </ColBox>
           <ColBox>
             <h4 className="text-sm font-semibold mb-1">Recovery Mechanisms</h4>
-            <p className="text-xs text-[#64748b] mb-0">Unparseable output → fallback LLM extraction. Timeout → retry once then mark INCONCLUSIVE for that round. Never blocks the whole debate.</p>
+            <p className="text-xs text-[#64748b] dark:text-[#94a3b8] mb-0">Unparseable output → fallback LLM extraction. Timeout → retry once then mark INCONCLUSIVE for that round. Never blocks the whole debate.</p>
           </ColBox>
         </TwoCol>
 
@@ -233,11 +310,11 @@ Final Output: Answer + Evidence Citations + Trust Trajectory + Per-Agent Reasoni
         <TwoCol>
           <ColBox>
             <h4 className="text-sm font-semibold mb-1">Retrieval</h4>
-            <p className="text-xs text-[#64748b] mb-0">Source-partitioned: Agent A→PubMed, B→ArXiv, C→Semantic Scholar. Cross-encoder reranks passages. Per-claim verdict: supported / contradicted / unverifiable. If removed → system reduces to MoA (baseline B6).</p>
+            <p className="text-xs text-[#64748b] dark:text-[#94a3b8] mb-0">Source-partitioned: Agent A→PubMed, B→ArXiv, C→Semantic Scholar. Cross-encoder reranks passages. Per-claim verdict: supported / contradicted / unverifiable. If removed → system reduces to MoA (baseline B6).</p>
           </ColBox>
           <ColBox>
             <h4 className="text-sm font-semibold mb-1">Orchestrator</h4>
-            <p className="text-xs text-[#64748b] mb-0">LangGraph state machine manages round sequencing, injection point (t=1→2), trust updates, final aggregation. Hard round cap (K=3) and retry cap (3) prevent runaway loops.</p>
+            <p className="text-xs text-[#64748b] dark:text-[#94a3b8] mb-0">LangGraph state machine manages round sequencing, injection point (t=1→2), trust updates, final aggregation. Hard round cap (K=3) and retry cap (3) prevent runaway loops.</p>
           </ColBox>
         </TwoCol>
       </Section>
@@ -277,7 +354,7 @@ Final Output: Answer + Evidence Citations + Trust Trajectory + Per-Agent Reasoni
 9. FINAL RESULT PACKAGE
    → answer + citations + trust trajectory + reasoning traces`}</pre>
         </div>
-        <p className="text-xs text-[#64748b] mt-2">
+        <p className="text-xs text-[#64748b] dark:text-[#94a3b8] mt-2">
           Every intermediate output is logged — trust trajectory (step 7) is required to verify Propositions 2–3
           empirically; per-claim evidence verdicts (step 5) are required for ECR calibration.
         </p>
@@ -297,7 +374,7 @@ Final Output: Answer + Evidence Citations + Trust Trajectory + Per-Agent Reasoni
             <thead>
               <tr>
                 {['#', 'Component', 'Difficulty', 'Why'].map((h) => (
-                  <th key={h} className="p-2.5 text-left font-bold bg-[#f1f5f9] border-b-2 border-[#e2e8f0]">{h}</th>
+                  <th key={h} className="p-2.5 text-left font-bold bg-[#f1f5f9] dark:bg-[rgba(255,255,255,0.06)] border-b-2 border-[#e2e8f0] dark:border-[rgba(255,255,255,0.15)]">{h}</th>
                 ))}
               </tr>
             </thead>
@@ -309,7 +386,7 @@ Final Output: Answer + Evidence Citations + Trust Trajectory + Per-Agent Reasoni
                 [4, 'Trust update + LangGraph state machine', 'Moderate–High', 'Operator order must match proven Proposition 1 (softmax→clamp→renormalize)'],
                 [5, 'iMAD reimplementation (B9)', 'Highest', '~10 working days; requires reconstructing method from paper description'],
               ].map(([rank, component, difficulty, why], i) => (
-                <tr key={i} className="border-b border-[#e2e8f0] last:border-0 hover:bg-[#dce4ff] even:bg-[#f8fafc] transition-colors">
+                <tr key={i} className="border-b border-[#e2e8f0] dark:border-[rgba(255,255,255,0.08)] last:border-0 hover:bg-[#dce4ff] dark:hover:bg-[rgba(59,91,219,0.12)] even:bg-[#f8fafc] dark:even:bg-[rgba(255,255,255,0.03)] transition-colors">
                   <td className="p-2.5 font-bold">{rank}</td>
                   <td className="p-2.5">{component}</td>
                   <td className="p-2.5"><Badge variant={i === 4 ? 'rose' : i >= 2 ? 'amber' : 'blue'}>{difficulty}</Badge></td>
@@ -330,24 +407,24 @@ Final Output: Answer + Evidence Citations + Trust Trajectory + Per-Agent Reasoni
             <thead>
               <tr>
                 {['Dataset', 'Role', 'Source', 'Size', 'Limitation'].map((h) => (
-                  <th key={h} className="p-2.5 text-left font-bold bg-[#f1f5f9] border-b-2 border-[#e2e8f0] whitespace-nowrap">{h}</th>
+                  <th key={h} className="p-2.5 text-left font-bold bg-[#f1f5f9] dark:bg-[rgba(255,255,255,0.06)] border-b-2 border-[#e2e8f0] dark:border-[rgba(255,255,255,0.15)] whitespace-nowrap">{h}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
               {datasets.map((ds, i) => (
-                <tr key={i} className="border-b border-[#e2e8f0] last:border-0 hover:bg-[#dce4ff] even:bg-[#f8fafc] transition-colors">
+                <tr key={i} className="border-b border-[#e2e8f0] dark:border-[rgba(255,255,255,0.08)] last:border-0 hover:bg-[#dce4ff] dark:hover:bg-[rgba(59,91,219,0.12)] even:bg-[#f8fafc] dark:even:bg-[rgba(255,255,255,0.03)] transition-colors">
                   <td className="p-2.5 font-medium">{ds.name}</td>
                   <td className="p-2.5"><Badge variant={i < 3 ? 'rose' : 'blue'}>{ds.role.split(' ')[0]}</Badge> {ds.role}</td>
                   <td className="p-2.5">{ds.source}</td>
                   <td className="p-2.5 whitespace-nowrap">{ds.size}</td>
-                  <td className="p-2.5 text-xs text-[#64748b]">{ds.limitation}</td>
+                  <td className="p-2.5 text-xs text-[#64748b] dark:text-[#94a3b8]">{ds.limitation}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-        <p className="text-xs text-[#64748b] mt-3">
+        <p className="text-xs text-[#64748b] dark:text-[#94a3b8] mt-3">
           <strong>Fallback:</strong> If HLE access is delayed → GPQA-Diamond with injection protocol. If BrokenArXiv snapshot discontinues → freeze last snapshot. If Semantic Scholar API degrades → OpenAlex API.
         </p>
       </Section>
@@ -361,7 +438,7 @@ Final Output: Answer + Evidence Citations + Trust Trajectory + Per-Agent Reasoni
             <thead>
               <tr>
                 {['Metric', 'Definition', 'Primary Hypothesis'].map((h) => (
-                  <th key={h} className="p-2.5 text-left font-bold bg-[#f1f5f9] border-b-2 border-[#e2e8f0]">{h}</th>
+                  <th key={h} className="p-2.5 text-left font-bold bg-[#f1f5f9] dark:bg-[rgba(255,255,255,0.06)] border-b-2 border-[#e2e8f0] dark:border-[rgba(255,255,255,0.15)]">{h}</th>
                 ))}
               </tr>
             </thead>
@@ -372,7 +449,7 @@ Final Output: Answer + Evidence Citations + Trust Trajectory + Per-Agent Reasoni
                 ['ECR (Evidence Calibration)', 'Correlation between trust weight and empirical correctness', 'H3: ECR > 0.80 on GPQA, indicating trust tracks correctness'],
                 ['Task Accuracy', 'Standard answer accuracy per benchmark', 'H4: No regression on stable splits; ≥ MAD + 10% on adversarial'],
               ].map(([metric, defn, hyp], i) => (
-                <tr key={i} className="border-b border-[#e2e8f0] last:border-0 hover:bg-[#dce4ff] even:bg-[#f8fafc] transition-colors">
+                <tr key={i} className="border-b border-[#e2e8f0] dark:border-[rgba(255,255,255,0.08)] last:border-0 hover:bg-[#dce4ff] dark:hover:bg-[rgba(59,91,219,0.12)] even:bg-[#f8fafc] dark:even:bg-[rgba(255,255,255,0.03)] transition-colors">
                   <td className="p-2.5 font-medium">{metric}</td>
                   <td className="p-2.5">{defn}</td>
                   <td className="p-2.5 text-[#3b5bdb]">{hyp}</td>
@@ -388,7 +465,7 @@ Final Output: Answer + Evidence Citations + Trust Trajectory + Per-Agent Reasoni
             <thead>
               <tr>
                 {['ID', 'Baseline', 'What it measures'].map((h) => (
-                  <th key={h} className="p-2.5 text-left font-bold bg-[#f1f5f9] border-b-2 border-[#e2e8f0]">{h}</th>
+                  <th key={h} className="p-2.5 text-left font-bold bg-[#f1f5f9] dark:bg-[rgba(255,255,255,0.06)] border-b-2 border-[#e2e8f0] dark:border-[rgba(255,255,255,0.15)]">{h}</th>
                 ))}
               </tr>
             </thead>
@@ -404,7 +481,7 @@ Final Output: Answer + Evidence Citations + Trust Trajectory + Per-Agent Reasoni
                 ['B8', 'Ours (trust-weighted)', 'Primary system'],
                 ['B9', 'iMAD', 'Closest published competitor'],
               ].map(([id, bl, what], i) => (
-                <tr key={i} className="border-b border-[#e2e8f0] last:border-0 hover:bg-[#dce4ff] even:bg-[#f8fafc] transition-colors">
+                <tr key={i} className="border-b border-[#e2e8f0] dark:border-[rgba(255,255,255,0.08)] last:border-0 hover:bg-[#dce4ff] dark:hover:bg-[rgba(59,91,219,0.12)] even:bg-[#f8fafc] dark:even:bg-[rgba(255,255,255,0.03)] transition-colors">
                   <td className="p-2.5 font-bold whitespace-nowrap">{id}</td>
                   <td className="p-2.5">{bl}</td>
                   <td className="p-2.5">{what}</td>
@@ -425,7 +502,7 @@ Final Output: Answer + Evidence Citations + Trust Trajectory + Per-Agent Reasoni
           ].map(([name, effect], i) => (
             <div key={i} className="bg-[#f0f2f7] dark:bg-[#1a1d35] border border-[#e2e8f0] dark:border-[rgba(255,255,255,0.1)] rounded-md p-3">
               <div className="font-semibold text-xs mb-1">{name}</div>
-              <div className="text-xs text-[#64748b]">{effect}</div>
+              <div className="text-xs text-[#64748b] dark:text-[#94a3b8]">{effect}</div>
             </div>
           ))}
         </div>
@@ -446,13 +523,13 @@ Final Output: Answer + Evidence Citations + Trust Trajectory + Per-Agent Reasoni
             <thead>
               <tr>
                 {['Failure Scenario', 'Detection', 'Mitigation', 'Recovery'].map((h) => (
-                  <th key={h} className="p-2.5 text-left font-bold bg-[#f1f5f9] border-b-2 border-[#e2e8f0] whitespace-nowrap">{h}</th>
+                  <th key={h} className="p-2.5 text-left font-bold bg-[#f1f5f9] dark:bg-[rgba(255,255,255,0.06)] border-b-2 border-[#e2e8f0] dark:border-[rgba(255,255,255,0.15)] whitespace-nowrap">{h}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
               {failures.map((f, i) => (
-                <tr key={i} className="border-b border-[#e2e8f0] last:border-0 hover:bg-[#dce4ff] even:bg-[#f8fafc] transition-colors">
+                <tr key={i} className="border-b border-[#e2e8f0] dark:border-[rgba(255,255,255,0.08)] last:border-0 hover:bg-[#dce4ff] dark:hover:bg-[rgba(59,91,219,0.12)] even:bg-[#f8fafc] dark:even:bg-[rgba(255,255,255,0.03)] transition-colors">
                   <td className="p-2.5 font-medium">{f.scenario}</td>
                   <td className="p-2.5">{f.detection}</td>
                   <td className="p-2.5">{f.mitigation}</td>
@@ -472,7 +549,7 @@ Final Output: Answer + Evidence Citations + Trust Trajectory + Per-Agent Reasoni
           use iMAD's published numbers for easy-question conditions.
         </p>
         <RiskTable rows={risks} />
-        <p className="text-xs text-[#64748b] mt-3">
+        <p className="text-xs text-[#64748b] dark:text-[#94a3b8] mt-3">
           <strong>Critical risk:</strong> Trust signal doesn't behaviorally change output (Challenge C) — mitigated
           by Month 1 pilot (~20–30 toy questions) before full build-out. If pilot fails, the project reframes to
           report the negative result honestly as a finding about when evidence-grounded trust does/doesn't influence
@@ -517,7 +594,7 @@ Final Output: Answer + Evidence Citations + Trust Trajectory + Per-Agent Reasoni
               </span>
               <div className="min-w-0">
                 <div className="font-semibold text-sm">{title}</div>
-                <div className="text-xs text-[#64748b] mt-0.5">{desc}</div>
+                <div className="text-xs text-[#64748b] dark:text-[#94a3b8] mt-0.5">{desc}</div>
               </div>
             </div>
           ))}

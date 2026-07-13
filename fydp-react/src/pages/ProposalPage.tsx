@@ -20,6 +20,16 @@ export function ProposalPage() {
       />
 
       <main className="max-w-[1150px] mx-auto my-10 px-4 sm:px-5">
+        {/* Print button */}
+        <div className="flex justify-end mb-4 print:hidden">
+          <button
+            onClick={() => window.print()}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[#3b5bdb] text-white text-sm font-semibold rounded-md hover:bg-[#2d4ab8] transition-colors cursor-pointer shadow-sm"
+          >
+            🖨️ Print / Save as PDF
+          </button>
+        </div>
+
         <Section>
           <SectionTitle icon="📄">Formal Supervisor Proposal</SectionTitle>
           <Callout variant="info" title="ℹ Document Purpose">
@@ -34,7 +44,7 @@ export function ProposalPage() {
               Trust-Calibrated Multi-Agent Scientific Deliberation<br />
               for Mitigating Sycophantic Consensus in LLM Reasoning
             </h1>
-            <p className="text-center text-sm text-[#64748b] mb-1">Md. Atikur Rahaman · FYDP 2026–2027</p>
+            <p className="text-center text-sm text-[#64748b] dark:text-[#94a3b8] mb-1">Md. Atikur Rahaman · FYDP 2026–2027</p>
             <p className="text-center text-xs text-[#94a3b8] mb-4">Supervisor: [Name] · Date: [Date]</p>
             <hr className="border-[#cfcfcf] dark:border-[rgba(255,255,255,0.15)] mb-4" />
 
@@ -115,7 +125,7 @@ export function ProposalPage() {
             </p>
 
             <hr className="border-[#cfcfcf] dark:border-[rgba(255,255,255,0.15)] mb-4" />
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-[#64748b]">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-[#64748b] dark:text-[#94a3b8]">
               <div><p className="font-semibold text-[#1f3a5f] dark:text-[#c7d2fe] mb-1">Supervisor Signature:</p><p>_______________________</p></div>
               <div><p className="font-semibold text-[#1f3a5f] dark:text-[#c7d2fe] mb-1">Decision:</p><p>☐ Approved  ☐ Revision Required  ☐ Declined</p></div>
               <div><p className="font-semibold text-[#1f3a5f] dark:text-[#c7d2fe] mb-1">Date:</p><p>_______________________</p></div>

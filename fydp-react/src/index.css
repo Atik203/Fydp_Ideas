@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --color-primary: #12172b;
@@ -128,6 +129,14 @@ pre::-webkit-scrollbar {
 }
 
 @media print {
-  nav { display: none; }
-  body { background: #fff; font-size: 11pt; color: #000; }
+  nav, footer, .print\:hidden { display: none !important; }
+  body { background: #fff !important; font-size: 11pt; color: #000; }
+  header { background: #fff !important; color: #000 !important; padding: 1.5rem 1rem !important; }
+  header h1, header p, header div { color: #000 !important; }
+  header div[style*="radial-gradient"],
+  header div[style*="linear-gradient(90deg"],
+  header div.bg-\[rgba\(255\,255\,255\,0\.12\)\],
+  header div.inline-block { display: none !important; }
+  section { break-inside: avoid; box-shadow: none !important; border: 1px solid #ddd !important; }
+  .shadow-sm, .shadow-md { box-shadow: none !important; }
 }

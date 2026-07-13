@@ -104,18 +104,18 @@ function RoadmapTable({ topics }: { topics: RoadmapTopic[] }) {
         <thead>
           <tr>
             {['#', 'Topic', 'Level Needed', 'Importance', 'Why Needed'].map((h) => (
-              <th key={h} className="p-3 text-left font-bold bg-[#f1f5f9] border-b-2 border-[#e2e8f0] whitespace-nowrap">{h}</th>
+              <th key={h} className="p-3 text-left font-bold bg-[#f1f5f9] dark:bg-[rgba(255,255,255,0.06)] border-b-2 border-[#e2e8f0] dark:border-[rgba(255,255,255,0.15)] whitespace-nowrap">{h}</th>
             ))}
           </tr>
         </thead>
         <tbody>
           {topics.map((t) => (
-            <tr key={t.num} className="border-b border-[#e2e8f0] last:border-0 hover:bg-[#dce4ff] even:bg-[#f8fafc] transition-colors">
+            <tr key={t.num} className="border-b border-[#e2e8f0] dark:border-[rgba(255,255,255,0.08)] last:border-0 hover:bg-[#dce4ff] dark:hover:bg-[rgba(59,91,219,0.12)] even:bg-[#f8fafc] dark:even:bg-[rgba(255,255,255,0.03)] transition-colors">
               <td className="p-3">{t.num}</td>
               <td className="p-3 font-medium">{t.topic}</td>
               <td className="p-3 whitespace-nowrap">{t.levelEmoji} {t.level}</td>
               <td className="p-3">{importanceBadge(t.importance)}</td>
-              <td className="p-3 text-[#64748b]">{t.whyNeeded}</td>
+              <td className="p-3 text-[#64748b] dark:text-[#94a3b8]">{t.whyNeeded}</td>
             </tr>
           ))}
         </tbody>
@@ -178,7 +178,7 @@ export function RoadmapPage() {
                 </span>
                 <div className="min-w-0">
                   <div className="font-semibold text-sm">{title}</div>
-                  <div className="text-xs text-[#64748b] mt-0.5">{desc}</div>
+                  <div className="text-xs text-[#64748b] dark:text-[#94a3b8] mt-0.5">{desc}</div>
                 </div>
               </div>
             ))}
@@ -199,8 +199,8 @@ export function RoadmapPage() {
             <table className="w-full border-collapse text-sm">
               <thead>
                 <tr>
-                  <th className="p-3 text-left font-bold bg-[#f1f5f9] border-b-2 border-[#e2e8f0]">Level</th>
-                  <th className="p-3 text-left font-bold bg-[#f1f5f9] border-b-2 border-[#e2e8f0]">Meaning</th>
+                  <th className="p-3 text-left font-bold bg-[#f1f5f9] dark:bg-[rgba(255,255,255,0.06)] border-b-2 border-[#e2e8f0] dark:border-[rgba(255,255,255,0.15)]">Level</th>
+                  <th className="p-3 text-left font-bold bg-[#f1f5f9] dark:bg-[rgba(255,255,255,0.06)] border-b-2 border-[#e2e8f0] dark:border-[rgba(255,255,255,0.15)]">Meaning</th>
                 </tr>
               </thead>
               <tbody>
@@ -210,7 +210,7 @@ export function RoadmapPage() {
                   ['🟡 Advanced', 'Able to implement, debug, and explain independently'],
                   ['🔴 Expert', 'Deep enough understanding to contribute novel research ideas'],
                 ].map(([level, meaning]) => (
-                  <tr key={level} className="border-b border-[#e2e8f0] last:border-0 hover:bg-[#dce4ff] even:bg-[#f8fafc] transition-colors">
+                  <tr key={level} className="border-b border-[#e2e8f0] dark:border-[rgba(255,255,255,0.08)] last:border-0 hover:bg-[#dce4ff] dark:hover:bg-[rgba(59,91,219,0.12)] even:bg-[#f8fafc] dark:even:bg-[rgba(255,255,255,0.03)] transition-colors">
                     <td className="p-3 font-medium">{level}</td>
                     <td className="p-3">{meaning}</td>
                   </tr>

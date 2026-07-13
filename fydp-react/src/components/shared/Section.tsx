@@ -19,8 +19,8 @@ interface SectionProps {
 export function Section({ accent = 'none', className, children }: SectionProps) {
   return (
     <section className={cn(
-      'bg-white p-8 rounded-[10px] shadow-sm mb-7 border border-[#e2e8f0]',
-      'hover:shadow-md hover:border-[#cbd5e1] transition-all duration-200',
+      'bg-white dark:bg-[#1a1d35] p-8 rounded-[10px] shadow-sm mb-7 border border-[#e2e8f0] dark:border-[rgba(255,255,255,0.1)]',
+      'hover:shadow-md hover:border-[#cbd5e1] dark:hover:border-[rgba(255,255,255,0.18)] transition-all duration-200',
       accentBorder[accent],
       className
     )}>
@@ -36,7 +36,7 @@ interface SectionTitleProps {
 
 export function SectionTitle({ icon, children }: SectionTitleProps) {
   return (
-    <h2 className="font-serif text-[1.35rem] font-bold text-[#12172b] mb-4 pb-2 border-b-2 border-[#e2e8f0] tracking-[-0.01em] flex items-center gap-2">
+    <h2 className="font-serif text-[1.35rem] font-bold text-[#12172b] dark:text-[#c7d2fe] mb-4 pb-2 border-b-2 border-[#e2e8f0] dark:border-[rgba(255,255,255,0.15)] tracking-[-0.01em] flex items-center gap-2">
       {icon && <span className="text-[1.1rem] flex-shrink-0">{icon}</span>}
       {children}
     </h2>
@@ -50,7 +50,7 @@ interface ColBoxProps {
 
 export function ColBox({ children, className }: ColBoxProps) {
   return (
-    <div className={cn('bg-[#f0f2f7] border border-[#e2e8f0] rounded-md p-5', className)}>
+    <div className={cn('bg-[#f0f2f7] dark:bg-[rgba(255,255,255,0.04)] border border-[#e2e8f0] dark:border-[rgba(255,255,255,0.1)] rounded-md p-5', className)}>
       {children}
     </div>
   );
@@ -75,10 +75,10 @@ interface ChipProps {
 }
 
 const chipVariants: Record<NonNullable<ChipProps['variant']>, string> = {
-  default: 'bg-[#dce4ff] text-[#3b5bdb]',
-  green:   'bg-[#d3f9d8] text-[#0ca678]',
-  amber:   'bg-[#fff3bf] text-[#f08c00]',
-  rose:    'bg-[#ffe3e3] text-[#e03131]',
+  default: 'bg-[#dce4ff] dark:bg-[rgba(59,91,219,0.2)] text-[#3b5bdb] dark:text-[#93c5fd]',
+  green:   'bg-[#d3f9d8] dark:bg-[rgba(12,166,120,0.2)] text-[#0ca678] dark:text-[#6ee7b7]',
+  amber:   'bg-[#fff3bf] dark:bg-[rgba(240,140,0,0.2)] text-[#f08c00] dark:text-[#fcd34d]',
+  rose:    'bg-[#ffe3e3] dark:bg-[rgba(224,49,49,0.2)] text-[#e03131] dark:text-[#fca5a5]',
 };
 
 export function Chip({ children, variant = 'default' }: ChipProps) {
