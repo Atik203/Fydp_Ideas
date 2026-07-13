@@ -1,12 +1,13 @@
 import { cn } from '@/lib/utils';
 
-type CalloutVariant = 'gap' | 'feasibility' | 'info' | 'success';
+type CalloutVariant = 'gap' | 'feasibility' | 'info' | 'success' | 'warning';
 
 const variantClasses: Record<CalloutVariant, { box: string; title: string }> = {
   gap:         { box: 'bg-[#ffe3e3] border-[#e03131]', title: 'text-[#e03131]' },
   feasibility: { box: 'bg-[#fff3bf] border-[#f08c00]', title: 'text-[#f08c00]' },
   info:        { box: 'bg-[#dbe4ff] border-[#1c7ed6]', title: 'text-[#1c7ed6]' },
   success:     { box: 'bg-[#d3f9d8] border-[#0ca678]', title: 'text-[#0ca678]' },
+  warning:     { box: 'bg-[#fff3bf] border-[#f08c00]', title: 'text-[#f08c00]' },
 };
 
 interface CalloutProps {

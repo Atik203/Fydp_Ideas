@@ -10,32 +10,6 @@ export interface CoverItem {
   href?: string;
 }
 
-export interface ScoreRow {
-  rank: number;
-  title: string;
-  href: string;
-  domain: string;
-  status: string;
-  statusVariant: 'green' | 'blue' | 'amber' | 'rose';
-  score: string;
-}
-
-export interface DetailedScoreRow {
-  rank: number;
-  title: string;
-  href: string;
-  domainLabel: string;
-  domainVariant: 'blue' | 'green' | 'amber';
-  summary: string;
-  novelty: number;
-  feasibility: number;
-  q1pub: number;
-  phdImpact: number;
-  risk: number;
-  complexity: number;
-  total: string;
-}
-
 export interface GanttPhase {
   name: string;
   duration: string;
@@ -66,159 +40,127 @@ export interface RiskRow {
   mitigation: string;
 }
 
-export interface EvalAxisBox {
-  title: string;
-  description: string;
-}
-
-// ── Overview page data ──────────────────────────────────────────────────────
-
-export const overviewKpis: KpiCard[] = [
-  { value: '5', label: 'Research Directions', variant: 'default' },
-  { value: '12', label: 'Month Timeline', variant: 'green' },
-  { value: 'Q1', label: 'Target Venue', variant: 'sky' },
-  { value: '4.6', label: 'Top Composite Score', variant: 'amber' },
-  { value: '2', label: 'Recommended Ideas', variant: 'rose' },
-];
-
-export const rankedIdeas: ScoreRow[] = [
-  {
-    rank: 1, href: '/idea/1',
-    title: 'Trust-Calibrated Multi-Agent Scientific Deliberation',
-    domain: 'Agentic AI / Reasoning',
-    status: 'Recommended', statusVariant: 'green',
-    score: '4.6',
-  },
-  {
-    rank: 2, href: '/idea/2',
-    title: 'Argumentative Scientific Claim Verification',
-    domain: 'NLP / Discourse Graphs',
-    status: 'Strong Backup', statusVariant: 'blue',
-    score: '4.2',
-  },
-  {
-    rank: 3, href: '/idea/3',
-    title: 'Temporal Knowledge Decay + Dynamic Knowledge Graphs',
-    domain: 'NLP / Graph-RAG',
-    status: 'Consider', statusVariant: 'blue',
-    score: '4.0',
-  },
-  {
-    rank: 4, href: '/idea/4',
-    title: 'Neuro-Symbolic Rare Disease NLP',
-    domain: 'Healthcare NLP',
-    status: 'High Risk', statusVariant: 'amber',
-    score: '3.6',
-  },
-  {
-    rank: 5, href: '/idea/5',
-    title: 'Scientific Verification using Agentic LLMs',
-    domain: 'Agentic AI / Tool Use',
-    status: 'Lower Novelty', statusVariant: 'amber',
-    score: '3.2',
-  },
-];
-
-export const detailedScoreRows: DetailedScoreRow[] = [
-  {
-    rank: 1, href: '/idea/1',
-    title: 'Trust-Calibrated Multi-Agent Scientific Deliberation',
-    domainLabel: 'LLM + Agent', domainVariant: 'blue',
-    summary: 'Dynamic evidence-grounded trust calibration to mitigate sycophantic consensus collapse during multi-agent deliberation',
-    novelty: 5, feasibility: 5, q1pub: 5, phdImpact: 5, risk: 4, complexity: 4, total: '29/30',
-  },
-  {
-    rank: 2, href: '/idea/2',
-    title: 'Argumentative Scientific Claim Verification',
-    domainLabel: 'NLP', domainVariant: 'green',
-    summary: 'Graph-based argument structure modeling over multiple papers to verify and calibrate scientific claims epistemically',
-    novelty: 4, feasibility: 5, q1pub: 4, phdImpact: 4, risk: 5, complexity: 5, total: '27/30',
-  },
-  {
-    rank: 3, href: '/idea/3',
-    title: 'Temporal Knowledge Decay + Dynamic KG',
-    domainLabel: 'NLP', domainVariant: 'green',
-    summary: 'Temporal validity scoring and conflict resolution between LLM parametric memory and dynamically retrieved knowledge',
-    novelty: 4, feasibility: 4, q1pub: 4, phdImpact: 4, risk: 4, complexity: 4, total: '24/30',
-  },
-  {
-    rank: 4, href: '/idea/4',
-    title: 'Neuro-Symbolic Rare Disease NLP',
-    domainLabel: 'Health NLP', domainVariant: 'amber',
-    summary: 'Ontology-grounded few-shot neural NLP for rare disease identification from clinical text with explainable reasoning chains',
-    novelty: 4, feasibility: 4, q1pub: 4, phdImpact: 4, risk: 4, complexity: 3, total: '23/30',
-  },
-  {
-    rank: 5, href: '/idea/5',
-    title: 'Scientific Verification via Agentic LLMs',
-    domainLabel: 'LLM + Agent', domainVariant: 'blue',
-    summary: 'Multi-agent pipeline for autonomous decomposition, retrieval, methodology auditing, and hallucination-guarded verification',
-    novelty: 5, feasibility: 3, q1pub: 5, phdImpact: 5, risk: 3, complexity: 3, total: '24/30',
-  },
-];
-
+// Blueprint §12 — Month-by-Month (Jul 2026 – Apr 2027)
 export const ganttPhases: GanttPhase[] = [
-  { name: 'Phase 0: Planning', duration: 'Sep 2026 (Wk 1–2)', deliverables: 'Supervisor sign-off, environment setup, access provisioning', progress: 100, barVariant: 'teal' },
-  { name: 'Phase 1: Literature Review', duration: 'Sep – Oct 2026', deliverables: '30-paper annotated bibliography, baseline MAD sycophancy replication', progress: 90, barVariant: 'default' },
-  { name: 'Phase 2: System Build', duration: 'Nov – Jan 2027', deliverables: 'RAG module, trust function, multi-agent loop (v1)', progress: 60, barVariant: 'amber' },
-  { name: 'Phase 3: Experiments', duration: 'Feb – Apr 2027', deliverables: 'Full 4-baseline × 3-dataset matrix, ablation studies, 3-seed runs', progress: 40, barVariant: 'amber' },
-  { name: 'Phase 4: Analysis', duration: 'May – Jun 2027', deliverables: 'Error analysis, case studies, human evaluation, final metrics', progress: 20, barVariant: 'rose' },
-  { name: 'Phase 5: Writing & Submit', duration: 'Jul – Aug 2027', deliverables: 'Paper draft, thesis, peer-review submission, FYDP defence', progress: 10, barVariant: 'rose' },
+  { name: 'Ph 0: Literature & Setup', duration: 'Jul 2026', deliverables: 'Literature freeze, vLLM+LangGraph setup, model ID verification, reproduce vanilla MAD', progress: 0, barVariant: 'teal' },
+  { name: 'Ph 1: Injection + Baselines', duration: 'Aug 2026', deliverables: 'Injection protocol (§5.4), B1–B4 baselines, Proposition 1 proof, Month-1 pilot', progress: 0, barVariant: 'default' },
+  { name: 'Ph 2: Trust Mechanism Build', duration: 'Sep–Oct 2026', deliverables: 'Claim decomposition, source-partitioned RAG, trust function v1, B5/B6/B9', progress: 0, barVariant: 'amber' },
+  { name: 'Ph 2→3: Mid-Project', duration: 'Nov 2026', deliverables: 'Design freeze, dry-run on 1 dataset, FYDP-1 defence preparation', progress: 0, barVariant: 'amber' },
+  { name: 'Ph 3a: Main Experiments', duration: 'Dec 2026', deliverables: 'Core conditions × primary datasets × 3 seeds × 95% CI', progress: 0, barVariant: 'rose' },
+  { name: 'Ph 3b: Ablations + Scaling', duration: 'Jan 2027', deliverables: '4 ablations, α/β sweep, N∈{2,3,5}, results freeze', progress: 0, barVariant: 'rose' },
+  { name: 'Ph 4: Human Eval + Analysis', duration: 'Feb 2027', deliverables: 'n=60 human eval, ECR calibration, failure analysis, buffer month', progress: 0, barVariant: 'default' },
+  { name: 'Ph 5: Writing & Submit', duration: 'Mar–Apr 2027', deliverables: 'Thesis + paper drafting, reproducibility package, submission + FYDP-2 defence', progress: 0, barVariant: 'teal' },
 ];
 
+// Blueprint §12 Gates
 export const milestones: TimelineItem[] = [
   {
-    milestone: 'Milestone M1',
+    milestone: 'Gate 0',
+    date: 'Jul 2026',
+    description: 'Base debate loop reproduces Du et al. 2023 on GPQA slice. references.bib complete. Month-1 pilot design finalized.',
+    deliverable: 'Working MAD reproduction',
+  },
+  {
+    milestone: 'Gate 1 (Go/No-Go)',
+    date: 'Aug 2026',
+    description: 'κ ≥ 0.75 injection validation. Baseline CCR ≥ 0.30 confirmed. Behavioral-effectiveness pilot executed — trust weight measurably shifts aggregation output on ~20–30 toy questions.',
+    deliverable: 'Pilot validated + B1–B4 done',
+  },
+  {
+    milestone: 'Gate 2',
     date: 'Oct 2026',
-    description: 'Baseline sycophancy rate reproduced on BrokenMath / GPQA ≥ 30% — confirms problem exists in our setup.',
-    deliverable: 'Deliverable: Baseline Report (5 pages)',
+    description: 'Trust mechanism + source-partitioned RAG + competitor baselines (B5/B6/B9) complete. First CCR/MPR measurement on 1 dataset.',
+    deliverable: 'Prototype with first results',
   },
   {
-    milestone: 'Milestone M2',
+    milestone: 'FYDP-1 Defence',
+    date: 'Nov 2026',
+    description: 'Mid-project report with design freeze, initial results, and remaining execution plan.',
+    deliverable: 'Mid-project report + presentation',
+  },
+  {
+    milestone: 'Gate 3',
     date: 'Jan 2027',
-    description: 'Trust function implemented; initial results show ≥ 10% sycophancy reduction — validates core hypothesis.',
-    deliverable: 'Deliverable: Progress Report to Supervisor',
+    description: 'Full results freeze with CIs + effect sizes across all conditions and datasets.',
+    deliverable: 'Results table + ablations complete',
   },
   {
-    milestone: 'Milestone M3',
-    date: 'Apr 2027',
-    description: 'Full experimental matrix complete across 3 datasets, 4 baselines, 3 seeds with confidence intervals.',
-    deliverable: 'Deliverable: Results Dashboard + Ablation Table',
-  },
-  {
-    milestone: 'Milestone M4',
-    date: 'Jul 2027',
-    description: 'Paper draft submitted to supervisor for review. FYDP thesis first draft complete.',
-    deliverable: 'Deliverable: Paper Draft + Thesis Draft',
-  },
-  {
-    milestone: 'Milestone M5',
-    date: 'Aug 2027',
-    description: 'Venue submission + FYDP final defence.',
-    deliverable: 'Deliverable: Submitted Paper + Defence Slides',
+    milestone: 'Submit + FYDP-2',
+    date: 'Mar–Apr 2027',
+    description: 'Paper submitted to target venue. FYDP thesis completed. Final defence.',
+    deliverable: 'Submitted paper + defence slides',
   },
 ];
 
+// Blueprint §7 — Models & Tools
 export const resources: ResourceCard[] = [
-  { label: 'Compute', value: '1× A100 80GB (or equiv.)', sub: 'Google Colab Pro / University HPC' },
-  { label: 'Base Models', value: 'Qwen-3.5, Mistral Small 4, Phi-4-Reasoning', sub: 'Open-weight, 4-bit quantized via vLLM' },
-  { label: 'Frameworks', value: 'LangGraph, AutoGen, PyTorch', sub: 'Open source, no licensing cost' },
-  { label: 'Retrieval', value: 'Semantic Scholar API, FAISS', sub: 'Free academic API access' },
-  { label: 'Primary Datasets', value: 'BrokenMath, BrokenArXiv, HLE, GPQA', sub: 'Frontier sycophancy benchmarks' },
-  { label: 'Estimated Cost', value: '~$200–400 USD', sub: 'Cloud API calls (judge module only)' },
+  { label: 'Agent 1', value: 'Qwen3-32B (4-bit)', sub: 'vLLM inference, single A100' },
+  { label: 'Agent 2', value: 'Mistral-Small-3.2-24B', sub: 'Different training lineage → genuine heterogeneity' },
+  { label: 'Agent 3', value: 'Phi-4-Reasoning', sub: 'Reasoning-specialized, third cognitive style' },
+  { label: 'Oracle (B7)', value: 'Gemini 2.5 Pro', sub: 'Upper-bound ceiling only, ~$150–200 budget' },
+  { label: 'Reranker', value: 'ms-marco-MiniLM cross-encoder', sub: 'Standard, fast, well-validated' },
+  { label: 'Inference', value: 'vLLM', sub: 'Free, fast, multi-model serving' },
+  { label: 'Orchestration', value: 'LangGraph', sub: 'State-machine fits round-based debate' },
+  { label: 'Retrieval APIs', value: 'PubMed, ArXiv, Semantic Scholar', sub: 'Free academic API access' },
 ];
 
+// Blueprint §11 — Risk Assessment
 export const risks: RiskRow[] = [
-  { risk: 'Compute unavailability', likelihood: 'Medium', likelihoodVariant: 'amber', impact: 'High', impactVariant: 'rose', mitigation: 'Use quantized 7–8B models locally; allocate cloud budget early' },
-  { risk: 'Sycophancy effect too small to measure', likelihood: 'Low', likelihoodVariant: 'green', impact: 'High', impactVariant: 'rose', mitigation: 'Pre-validate effect size on BrokenMath (known high sycophancy rate) before full experiments' },
-  { risk: 'RAG retrieval quality too low', likelihood: 'Medium', likelihoodVariant: 'amber', impact: 'Medium', impactVariant: 'amber', mitigation: 'Cross-encoder reranker; citation-count filtering; domain restriction to biomedicine' },
-  { risk: 'Paper rejected (novelty concerns)', likelihood: 'Medium', likelihoodVariant: 'amber', impact: 'Medium', impactVariant: 'amber', mitigation: 'Target workshop (ACL SRW) as a fallback; frame contribution as empirical study' },
-  { risk: 'Thesis / paper writing delays', likelihood: 'Low', likelihoodVariant: 'green', impact: 'Medium', impactVariant: 'amber', mitigation: 'Begin writing Phase 3 results immediately; use structured paper template from Month 1' },
+  { risk: 'Trust signal doesn\'t change output (Challenge C)', likelihood: 'Medium', likelihoodVariant: 'amber', impact: 'Critical', impactVariant: 'rose', mitigation: 'Month 1 pilot validates before full build — 3–4 day toy run' },
+  { risk: 'Retrieval noise degrades evidence quality', likelihood: 'Medium', likelihoodVariant: 'amber', impact: 'Moderate', impactVariant: 'amber', mitigation: 'Cross-encoder reranker + citation-count filter + domain restriction' },
+  { risk: 'Reviewers see as incremental over MoA/iMAD', likelihood: 'Low-Medium', likelihoodVariant: 'amber', impact: 'Moderate', impactVariant: 'amber', mitigation: 'B6/B9 direct comparisons; "+X% CCR over iMAD" as headline' },
+  { risk: 'Timeline overload (Phase 2)', likelihood: 'High', likelihoodVariant: 'rose', impact: 'High', impactVariant: 'rose', mitigation: 'Use iMAD published numbers for easy conditions; reserve reimplementation for adversarial' },
+  { risk: 'iMAD reimplementation fidelity', likelihood: 'Medium', likelihoodVariant: 'amber', impact: 'Moderate', impactVariant: 'amber', mitigation: '~10-day dedicated budget; explicit divergence documentation' },
+  { risk: 'Single A100 compute ceiling', likelihood: 'Medium', likelihoodVariant: 'amber', impact: 'Moderate', impactVariant: 'amber', mitigation: '4-bit quantization; core replication targeted at 72 hours' },
 ];
 
-export const evalAxes: EvalAxisBox[] = [
-  { title: 'Axis 1 — Novelty', description: 'Does the idea close an explicit, citable research gap? Does it contribute a new algorithm, architecture, or methodology — not just a new application of known methods?' },
-  { title: 'Axis 2 — Methodological Rigor', description: 'Can the evaluation plan yield statistically significant, reproducible results with clear ablation studies, multiple baselines, and proper confidence intervals?' },
-  { title: 'Axis 3 — Engineering Complexity', description: 'Does the system address open-ended, ill-defined problems meeting Washington Accord graduate-level standards? Is it more than a pipeline of existing APIs?' },
-  { title: 'Axis 4 — Feasibility', description: 'Is the scope honestly achievable in 12 months with ≤ 2×A100 compute, open-weight models, and publicly available datasets — without EHR, legal, or IRB dependencies?' },
+// Blueprint §8 — Dataset Plan
+export interface DatasetRow {
+  name: string;
+  role: string;
+  source: string;
+  size: string;
+  limitation: string;
+}
+
+export const datasets: DatasetRow[] = [
+  { name: 'BrokenMath', role: 'Primary adversarial stress test', source: 'INSAIT-Institute (HF)', size: '1,000 QA', limitation: 'Math-focused, may not generalize to broader science' },
+  { name: 'BrokenArXiv', role: 'Adversarial, monthly-refreshed', source: 'MathArena', size: '500 QA', limitation: 'Monthly versioning — cite exact snapshot' },
+  { name: 'HLE', role: 'Hard scientific reasoning ceiling', source: 'cais/hle', size: '300 QA', limitation: 'Access approval lead time — apply in Phase 0' },
+  { name: 'GPQA Diamond', role: 'Stable comparison baseline', source: 'Public', size: '448 QA', limitation: 'Well-known, not adversarial' },
+  { name: 'MMLU-Pro (STEM)', role: 'Stable comparison baseline', source: 'Public', size: '12,000 QA', limitation: 'Broad STEM, non-adversarial' },
 ];
+
+// Blueprint §10 — Failure Handling
+export interface FailureRow {
+  scenario: string;
+  detection: string;
+  mitigation: string;
+  recovery: string;
+}
+
+export const failures: FailureRow[] = [
+  { scenario: 'Retrieval returns no evidence', detection: 'Zero passages above relevance threshold', mitigation: 'Broaden query before declaring sparse; mark claim abstained', recovery: 'Stratify results by retrieval-success rate in reporting' },
+  { scenario: 'Contradictory evidence retrieved', detection: 'Evidence verdicts conflict at >0.75 relevance', mitigation: 'Flag claim as "contested", report separately', recovery: 'Included as own category in human eval annotation' },
+  { scenario: 'All agents hallucinate same way', detection: 'Homogeneous-vs-heterogeneous shows no CCR difference', mitigation: 'Heterogeneous model families (partial)', recovery: 'Diagnosed explicitly in Phase 4 failure analysis' },
+  { scenario: 'Trust collapse (all to T_min)', detection: 'Trust variance monitoring across rounds', mitigation: 'Hard clamp floor (0.1) by design', recovery: 'Structurally prevented by Proposition 1 boundedness' },
+  { scenario: 'Claim extraction fails', detection: 'Tagged-claim regex/schema validation fails', mitigation: 'Structured output prompting with explicit tags', recovery: 'Fallback LLM-based extraction pass' },
+  { scenario: 'API rate limit / downtime', detection: 'HTTP error codes, timeout', mitigation: 'Local caching of prior retrievals', recovery: 'Retry + backoff; OpenAlex fallback' },
+  { scenario: 'Context window overflow', detection: 'Token count monitoring before each round', mitigation: 'Cap K=3 rounds; summarize prior rounds', recovery: 'Truncate oldest round detail, preserve trust trajectory' },
+  { scenario: 'iMAD reimplementation diverges', detection: 'Manual comparison vs reported results', mitigation: 'Explicit divergence documentation', recovery: 'Treat as honest limitation, not hidden' },
+];
+
+// Blueprint §10 — Edge Cases
+export interface EdgeCaseRow {
+  scenario: string;
+  prevention: string;
+  fallback: string;
+}
+
+// Difficulty ranking §7
+export interface DifficultyRow {
+  rank: number;
+  component: string;
+  difficulty: string;
+  reason: string;
+}
