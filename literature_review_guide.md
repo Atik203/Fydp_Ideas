@@ -6,7 +6,7 @@
 
 ## 🎯 Goal
 
-Each team member will review **at least 5 recent papers (2022–2026)** related to our idea.  
+Each team member will review **1 recent paper (2022–2026)** related to our idea.  
 The aim is to **identify what has already been done**, spot **gaps in existing research**, and understand how our idea fits into the current landscape.
 
 > [!IMPORTANT]
@@ -16,16 +16,20 @@ The aim is to **identify what has already been done**, spot **gaps in existing r
 
 ## ✅ What Each Member Should Do
 
-1. **Find 5+ relevant papers** using the search tips below.
-2. **Read smartly** — you don't need to read word-for-word. Focus on:
-   - **Abstract** → What is the paper about?
-   - **Introduction / Background** → What problem does it solve?
-   - **Related Work / Literature Review** → What did others do before?
-   - **Methodology** (skim) → How did they do it?
-   - **Results / Conclusion** → What did they find? What are the limitations?
-   - ⏱️ **Target: Understand each paper in ~30 minutes**. You can use AI (ChatGPT, Claude, etc.) to help you understand it quickly.
-3. **Fill in the format** below for each paper in your assigned Google Docs tab.
-4. **Keep it brief** — all 5 papers should fit within **2 pages total** in the doc.
+1. **Find 1 relevant paper** using the search tips below.
+2. **Read it deeply** — allocate **2 hours for reading** using this strategy:
+
+   | Time   | Focus Area                                    | What to Extract                          |
+   | ------ | --------------------------------------------- | ---------------------------------------- |
+   | 30 min | **Abstract + Introduction**                   | Problem, motivation, research question   |
+   | 30 min | **Methodology**                               | Approach, architecture, key techniques   |
+   | 30 min | **Related Work + Literature Review**          | Prior work, gap they are addressing      |
+   | 30 min | **Results + Conclusion + Limitations/Future** | Findings, limitations, what remains open |
+
+   - **30 min ↓ Write up** the entry using the format below.
+   - Use **AI tools** (see section below) to clarify confusing sections, define terms, or explain figures.
+3. **Fill in the format** below for the paper in your assigned Google Docs tab.
+4. **Keep it brief** — the entry should fit within **1 page** in the doc.
 
 ---
 
@@ -40,6 +44,26 @@ Use these sources to search for relevant papers:
 | ArXiv (AI/ML)       | https://arxiv.org               |
 | ACL Anthology (NLP) | https://aclanthology.org        |
 | Papers With Code    | https://paperswithcode.com      |
+
+### 🤖 Recommended AI Tools to Understand Papers Faster
+
+Use these tools alongside your reading to clarify concepts, summarize sections, and extract key information:
+
+| Tool                     | Best For                                       | Link                                | Free Tier        |
+| ------------------------ | ---------------------------------------------- | ----------------------------------- | ---------------- |
+| **ChatGPT / Claude**     | Explain confusing sections, define terms       | chat.openai.com / claude.ai         | Yes              |
+| **NotebookLM (Google)**  | Multi-document QA, upload PDF, ask questions   | notebooklm.google.com               | Free             |
+| **SciSpace**             | Chat with PDFs, inline copilot while reading   | typeset.io                          | Free tier        |
+| **Elicit**               | Extract structured data (methods, results)     | elicit.com                          | Free tier        |
+| **Consensus**            | Evidence-based answers from papers             | consensus.app                       | Free tier        |
+| **Semantic Scholar**     | Paper discovery + AI-generated TLDRs           | semanticscholar.org                 | Free             |
+| **Scite**                | Check how a paper was cited (support/contrast) | scite.ai                            | Free tier        |
+| **Connected Papers**     | Citation network graphs to find related work   | connectedpapers.com                 | Free             |
+| **Research Rabbit**      | Personalized paper recommendations             | researchrabbitapp.com               | Free             |
+| **Perplexity**           | Quick web + academic search with citations     | perplexity.ai                       | Free tier        |
+| **PapersFlow**           | Multi-agent lit review + writing with citations | papersflow.ai                      | Free tier        |
+
+> ⚠️ Always verify AI-generated summaries or citations against the actual paper. AI tools can hallucinate details.
 
 ### 🔎 Suggested Search Keywords
 
@@ -78,7 +102,8 @@ Authors & Year:
 [Author names, Year of publication]
 
 Link:
-[Direct link — ArXiv / DOI / Google Scholar]
+[Direct link — DOI / Conference page / ArXiv / Google Scholar]
+> Prefer a DOI or published conference link over ArXiv when available.
 
 Summary:
 [3–5 sentences. What is the paper about? What did they do?
@@ -142,11 +167,29 @@ behavior — both of which are central to our FYDP idea.
 ## 📌 Rules & Reminders
 
 - ✅ Papers must be from **2022 or later** (very strong preference for 2023–2025)
-- ✅ You can use **ChatGPT / Claude / Gemini** to summarize or explain a paper — but **write the entry in your own words**
+- ✅ You can use **AI tools** (see section below) to summarize or explain a paper — but **write the entry in your own words**
 - ✅ Keep entries **short and focused** — not a copy-paste of the abstract
 - ✅ The **"Gap / Limitation"** field is the most important — this tells us where our idea fits
 - ❌ Do NOT include papers that are completely unrelated (e.g., computer vision papers with no NLP/LLM angle)
 - ❌ Do NOT write more than 5–6 sentences per paper — we want brief, useful summaries, not full reports
+
+> [!IMPORTANT]
+> **Very Important: Verify peer-reviewed publication status.** 
+> Before citing any paper, check whether it has been published in a reputable, peer-reviewed journal or conference (e.g., ACL, EMNLP, NAACL, NeurIPS, ICML, ICLR, AAAI, IJCAI, IEEE, ACM — see full list below). arXiv.org is a preprint repository, not a peer-reviewed publication venue. While many papers on arXiv are later published after peer review, others remain unpublished preprints. Always check for a peer-reviewed published version and cite that version whenever possible. When you find a paper on arXiv, search for it on Google Scholar or the conference website to confirm if it was accepted at a peer-reviewed venue. If it has been published, use the published citation/DOI instead of the arXiv link.
+
+### ✅ Valid Peer-Reviewed Venues (Conference & Journal)
+
+| Area              | Venues                                                                 |
+| ----------------- | ---------------------------------------------------------------------- |
+| NLP / CL          | ACL, EMNLP, NAACL, EACL, COLING, TACL, Computational Linguistics      |
+| ML / AI           | NeurIPS, ICML, ICLR, AISTATS, COLT, UAI, JMLR, Machine Learning journal |
+| AI General        | AAAI, IJCAI, ECAI, Artificial Intelligence journal                     |
+| CS / Engineering  | IEEE (various), ACM (various), Springer LNCS                           |
+| HCI / Interdisc.  | CHI, CSCW, UIST, IUI                                                  |
+| Robotics          | ICRA, IROS, RSS, IEEE Transactions on Robotics                        |
+| Vision            | CVPR, ICCV, ECCV, IJCV, IEEE TPAMI, BMVC                              |
+
+> If a paper only exists on arXiv with no record of peer-reviewed publication, note this in your entry and treat it as a preprint (proceed with caution).
 
 ---
 
@@ -160,11 +203,11 @@ Each member gets their own tab in the shared Google Doc.
 
 ## ⏱️ Time Estimate
 
-| Task                 | Time                    |
-| -------------------- | ----------------------- |
-| Find 5 papers        | ~20–30 min              |
-| Read each paper (×5) | ~30 min each = ~2.5 hrs |
-| Write entries in doc | ~30–45 min              |
-| **Total per member** | **~3.5–4 hours**        |
+| Task                      | Time                    |
+| ------------------------- | ----------------------- |
+| Find 1 paper              | ~20–30 min              |
+| Read the paper (deep)     | **2 hours** (see strategy above) |
+| Write entry in doc        | **30 min**              |
+| **Total per member**      | **~3 hours**            |
 
 ---
